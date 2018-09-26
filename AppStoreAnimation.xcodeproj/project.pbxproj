@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		265D81E4215B642E00A792F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D81E3215B642E00A792F2 /* AppDelegate.swift */; };
-		265D81E6215B642E00A792F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D81E5215B642E00A792F2 /* ViewController.swift */; };
 		265D81E9215B642E00A792F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265D81E7215B642E00A792F2 /* Main.storyboard */; };
 		265D81EB215B643000A792F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265D81EA215B643000A792F2 /* Assets.xcassets */; };
 		265D81EE215B643000A792F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265D81EC215B643000A792F2 /* LaunchScreen.storyboard */; };
+		265D81FC215B6B6500A792F2 /* TabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D81FB215B6B6500A792F2 /* TabVC.swift */; };
+		265D8200215B6CDD00A792F2 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D81FF215B6CDD00A792F2 /* NavVC.swift */; };
+		265D8202215B705E00A792F2 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8201215B705E00A792F2 /* TodayVC.swift */; };
+		265D8204215B706F00A792F2 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8203215B706F00A792F2 /* GameVC.swift */; };
+		265D8206215B707E00A792F2 /* AppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8205215B707E00A792F2 /* AppVC.swift */; };
+		265D8208215B709600A792F2 /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8207215B709600A792F2 /* UpdateVC.swift */; };
+		265D820A215B70A900A792F2 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8209215B70A900A792F2 /* SearchVC.swift */; };
+		265D820D215B8A6700A792F2 /* TodayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D820C215B8A6700A792F2 /* TodayTableView.swift */; };
+		265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8213215B91B400A792F2 /* TodayCardCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		265D81E0215B642E00A792F2 /* AppStoreAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		265D81E3215B642E00A792F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		265D81E5215B642E00A792F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		265D81E8215B642E00A792F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		265D81EA215B643000A792F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		265D81ED215B643000A792F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		265D81EF215B643000A792F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		265D81FB215B6B6500A792F2 /* TabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabVC.swift; sourceTree = "<group>"; };
+		265D81FF215B6CDD00A792F2 /* NavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
+		265D8201215B705E00A792F2 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
+		265D8203215B706F00A792F2 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		265D8205215B707E00A792F2 /* AppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVC.swift; sourceTree = "<group>"; };
+		265D8207215B709600A792F2 /* UpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVC.swift; sourceTree = "<group>"; };
+		265D8209215B70A900A792F2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		265D820C215B8A6700A792F2 /* TodayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableView.swift; sourceTree = "<group>"; };
+		265D8213215B91B400A792F2 /* TodayCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +71,85 @@
 			isa = PBXGroup;
 			children = (
 				265D81E3215B642E00A792F2 /* AppDelegate.swift */,
-				265D81E5215B642E00A792F2 /* ViewController.swift */,
+				265D81FB215B6B6500A792F2 /* TabVC.swift */,
+				265D81FF215B6CDD00A792F2 /* NavVC.swift */,
+				265D81F5215B6AB200A792F2 /* Section */,
 				265D81E7215B642E00A792F2 /* Main.storyboard */,
 				265D81EA215B643000A792F2 /* Assets.xcassets */,
 				265D81EC215B643000A792F2 /* LaunchScreen.storyboard */,
 				265D81EF215B643000A792F2 /* Info.plist */,
 			);
 			path = AppStoreAnimation;
+			sourceTree = "<group>";
+		};
+		265D81F5215B6AB200A792F2 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				265D81FA215B6B3200A792F2 /* Search */,
+				265D81F9215B6B2200A792F2 /* Update */,
+				265D81F8215B6B1600A792F2 /* App */,
+				265D81F7215B6B0C00A792F2 /* Game */,
+				265D81F6215B6B0000A792F2 /* Today */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		265D81F6215B6B0000A792F2 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				265D820B215B8A2800A792F2 /* View */,
+				265D8201215B705E00A792F2 /* TodayVC.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		265D81F7215B6B0C00A792F2 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				265D8203215B706F00A792F2 /* GameVC.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		265D81F8215B6B1600A792F2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				265D8205215B707E00A792F2 /* AppVC.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		265D81F9215B6B2200A792F2 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				265D8207215B709600A792F2 /* UpdateVC.swift */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
+		265D81FA215B6B3200A792F2 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				265D8209215B70A900A792F2 /* SearchVC.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		265D820B215B8A2800A792F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				265D820E215B8A6F00A792F2 /* Cell */,
+				265D820C215B8A6700A792F2 /* TodayTableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		265D820E215B8A6F00A792F2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				265D8213215B91B400A792F2 /* TodayCardCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				265D81E6215B642E00A792F2 /* ViewController.swift in Sources */,
+				265D820A215B70A900A792F2 /* SearchVC.swift in Sources */,
+				265D8208215B709600A792F2 /* UpdateVC.swift in Sources */,
+				265D8200215B6CDD00A792F2 /* NavVC.swift in Sources */,
+				265D81FC215B6B6500A792F2 /* TabVC.swift in Sources */,
+				265D8202215B705E00A792F2 /* TodayVC.swift in Sources */,
+				265D8204215B706F00A792F2 /* GameVC.swift in Sources */,
+				265D820D215B8A6700A792F2 /* TodayTableView.swift in Sources */,
+				265D8206215B707E00A792F2 /* AppVC.swift in Sources */,
 				265D81E4215B642E00A792F2 /* AppDelegate.swift in Sources */,
+				265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AppStoreAnimation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AppStoreAnimation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
