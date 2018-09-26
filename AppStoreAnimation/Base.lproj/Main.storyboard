@@ -88,7 +88,37 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="351" height="301"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SXg-FQ-3IQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="301"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生活解决方案" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-VS-VjA">
+                                                    <rect key="frame" x="15" y="12" width="321" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帮你找份理想工作" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-qU-Lrm">
+                                                    <rect key="frame" x="12" y="36" width="327" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="eaj-qU-Lrm" firstAttribute="leading" secondItem="mII-gu-Ipf" secondAttribute="leading" constant="12" id="2ig-zz-QI6"/>
+                                            <constraint firstItem="SXg-FQ-3IQ" firstAttribute="leading" secondItem="mII-gu-Ipf" secondAttribute="leading" id="A2T-Ls-xi5"/>
+                                            <constraint firstAttribute="trailing" secondItem="eaj-qU-Lrm" secondAttribute="trailing" constant="12" id="BTw-32-0y9"/>
+                                            <constraint firstItem="z3u-VS-VjA" firstAttribute="top" secondItem="mII-gu-Ipf" secondAttribute="top" constant="12" id="Iyt-YO-2kW"/>
+                                            <constraint firstItem="z3u-VS-VjA" firstAttribute="leading" secondItem="mII-gu-Ipf" secondAttribute="leading" constant="15" id="OOK-LD-BFK"/>
+                                            <constraint firstItem="SXg-FQ-3IQ" firstAttribute="top" secondItem="mII-gu-Ipf" secondAttribute="top" id="fum-dT-yCQ"/>
+                                            <constraint firstItem="eaj-qU-Lrm" firstAttribute="top" secondItem="z3u-VS-VjA" secondAttribute="bottom" constant="6" id="j7C-QA-TKX"/>
+                                            <constraint firstAttribute="trailing" secondItem="z3u-VS-VjA" secondAttribute="trailing" constant="15" id="uC1-YW-a9H"/>
+                                            <constraint firstAttribute="bottom" secondItem="SXg-FQ-3IQ" secondAttribute="bottom" id="vG6-6g-re2"/>
+                                            <constraint firstAttribute="trailing" secondItem="SXg-FQ-3IQ" secondAttribute="trailing" id="yb9-by-1To"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -106,6 +136,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="no9-3a-n3m" id="zPr-bL-luN"/>
+                        <outlet property="layout" destination="DdH-e0-UoW" id="Z0q-hT-EtU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ux-Qa-mTX" userLabel="First Responder" sceneMemberID="firstResponder"/>

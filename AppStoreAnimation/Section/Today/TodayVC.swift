@@ -11,13 +11,17 @@ import UIKit
 class TodayVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var layout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Today"
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
+        collectionView.register(TodayCardCell.self)
+        layout.itemSize = CGSize(width: ScreenWidth-30, height: (ScreenWidth-30)*1.3)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
         // Do any additional setup after loading the view.
     }
     
@@ -44,11 +48,8 @@ extension TodayVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as TodayCardCell
+        return cell
     }
-    
-    
-    
-    
-    
+
 }

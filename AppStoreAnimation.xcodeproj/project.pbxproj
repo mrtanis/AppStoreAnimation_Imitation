@@ -20,6 +20,7 @@
 		265D820A215B70A900A792F2 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8209215B70A900A792F2 /* SearchVC.swift */; };
 		265D820D215B8A6700A792F2 /* TodayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D820C215B8A6700A792F2 /* TodayTableView.swift */; };
 		265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8213215B91B400A792F2 /* TodayCardCell.swift */; };
+		26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0EBED215BC473000CACB8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		265D8209215B70A900A792F2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		265D820C215B8A6700A792F2 /* TodayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableView.swift; sourceTree = "<group>"; };
 		265D8213215B91B400A792F2 /* TodayCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardCell.swift; sourceTree = "<group>"; };
+		26F0EBED215BC473000CACB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				265D81E3215B642E00A792F2 /* AppDelegate.swift */,
 				265D81FB215B6B6500A792F2 /* TabVC.swift */,
 				265D81FF215B6CDD00A792F2 /* NavVC.swift */,
+				26F0EBED215BC473000CACB8 /* Extensions.swift */,
 				265D81F5215B6AB200A792F2 /* Section */,
 				265D81E7215B642E00A792F2 /* Main.storyboard */,
 				265D81EA215B643000A792F2 /* Assets.xcassets */,
@@ -232,6 +235,7 @@
 				265D820D215B8A6700A792F2 /* TodayTableView.swift in Sources */,
 				265D8206215B707E00A792F2 /* AppVC.swift in Sources */,
 				265D81E4215B642E00A792F2 /* AppDelegate.swift in Sources */,
+				26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */,
 				265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
