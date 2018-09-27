@@ -35,14 +35,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AppStoreAnimation/Section/Today/TodayCollectionView.swift"
-            timestampString = "559737287.294157"
+            filePath = "AppStoreAnimation/Section/Today/View/Cell/TodayCardCell.swift"
+            timestampString = "559755017.2869051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "hitTest(_:with:)"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "shrink()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppStoreAnimation.TodayCardCell.shrink() -&gt; ()"
+                  moduleName = "AppStoreAnimation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mrtanis/Desktop/Code%20Zone/Swift%E7%BB%83%E4%B9%A0/%E4%BB%BF%E5%86%99%E9%A1%B9%E7%9B%AE/appstoreanimation/AppStoreAnimation/Section/Today/View/Cell/TodayCardCell.swift"
+                  timestampString = "559754639.464403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in AppStoreAnimation.TodayCardCell.shrink() -&gt; ()"
+                  moduleName = "AppStoreAnimation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mrtanis/Desktop/Code%20Zone/Swift%E7%BB%83%E4%B9%A0/%E4%BB%BF%E5%86%99%E9%A1%B9%E7%9B%AE/appstoreanimation/AppStoreAnimation/Section/Today/View/Cell/TodayCardCell.swift"
+                  timestampString = "559754639.467339"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -52,45 +84,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppStoreAnimation/Section/Today/View/Cell/TodayCardCell.swift"
-            timestampString = "559737287.294366"
+            timestampString = "559755017.2870589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "hitTest(_:with:)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "restore()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AppStoreAnimation/Section/Today/View/Cell/TodayCardCell.swift"
-            timestampString = "559737287.294892"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "point(inside:with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AppStoreAnimation/Section/Today/TodayVC.swift"
-            timestampString = "559737287.295194"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppStoreAnimation.TodayCardCell.restore() -&gt; ()"
+                  moduleName = "AppStoreAnimation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mrtanis/Desktop/Code%20Zone/Swift%E7%BB%83%E4%B9%A0/%E4%BB%BF%E5%86%99%E9%A1%B9%E7%9B%AE/appstoreanimation/AppStoreAnimation/Section/Today/View/Cell/TodayCardCell.swift"
+                  timestampString = "559754639.475126"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in AppStoreAnimation.TodayCardCell.restore() -&gt; ()"
+                  moduleName = "AppStoreAnimation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mrtanis/Desktop/Code%20Zone/Swift%E7%BB%83%E4%B9%A0/%E4%BB%BF%E5%86%99%E9%A1%B9%E7%9B%AE/appstoreanimation/AppStoreAnimation/Section/Today/View/Cell/TodayCardCell.swift"
+                  timestampString = "559754639.478071"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

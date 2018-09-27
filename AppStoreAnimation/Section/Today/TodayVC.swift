@@ -68,11 +68,28 @@ extension TodayVC: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         beginOffsetY = scrollView.contentOffset.y
     }
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offsetY = scrollView.contentOffset.y
-//        let offsetYDiff = abs(offsetY - beginOffsetY!)
-//        if offsetYDiff > maxMoveDistance {
-//            
-//        }
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollViewDidScroll")
+        guard let beginOffsetY = self.beginOffsetY else {
+            return
+        }
+        let offsetY = scrollView.contentOffset.y
+        let offsetYDiff = abs(offsetY - beginOffsetY)
+        if offsetYDiff > maxMoveDistance {
+            if let cell = currentTouchCell, cell.restoreExcuted == false {
+                cell.restoreExcuted = true
+                cell.calculateTimeInterval()
+                cell.restore()
+            }
+        }
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("scrollViewWillEndDragging")
+        guard let beginOffsetY = self.beginOffsetY , let cell = currentTouchCell else {
+            return
+        }
+        cell.calculateTimeInterval()
+        cell.restore()
+        cell.restoreExcuted = false
+    }
 }

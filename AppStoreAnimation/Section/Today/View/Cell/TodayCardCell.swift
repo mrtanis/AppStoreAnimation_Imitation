@@ -23,7 +23,11 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     //缩放动画开始到被中断的时间间隔
     var animationTimeInterval = 0.5
     //恢复动画是否执行
-    var restoreExcuted = false
+    var restoreExcuted = false {
+        didSet {
+//            print("恢复动画bool值被设置")
+        }
+    }
     
     
     override func awakeFromNib() {
@@ -76,35 +80,38 @@ class TodayCardCell: UICollectionViewCell, Reusable {
         let distance = abs(point.y - begin.y)
         if distance > maxMoveDistance && restoreExcuted == false {
             restoreExcuted = true
-            let nowTime = CFAbsoluteTimeGetCurrent()
-            let timeDiff = nowTime - beginTime!
-            animationTimeInterval = max(timeDiff, animationTotalTime)
+            calculateTimeInterval()
             restore()
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if restoreExcuted == false {
-            let nowTime = CFAbsoluteTimeGetCurrent()
-            let timeDiff = nowTime - beginTime!
-            animationTimeInterval = max(timeDiff, animationTotalTime)
+        print("TouchEnded")
+            calculateTimeInterval()
             restore()
-        }
         restoreExcuted = false
     }
     
+    
+    
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if restoreExcuted == false {
-            let nowTime = CFAbsoluteTimeGetCurrent()
-            let timeDiff = nowTime - beginTime!
-            animationTimeInterval = max(timeDiff, animationTotalTime)
+        print("TouchEnded")
+            calculateTimeInterval()
             restore()
-        }
         restoreExcuted = false
+    }
+    
+    //计算时间
+    func calculateTimeInterval() {
+        let nowTime = CFAbsoluteTimeGetCurrent()
+        let timeDiff = nowTime - beginTime!
+        animationTimeInterval = min(timeDiff, animationTotalTime)
     }
     
     //缩小动画
     func shrink() {
+        if self.transform != CGAffineTransform.identity { return }
+        print("缩小")
         UIView.animate(withDuration: animationTotalTime, delay: 0, options: .allowUserInteraction, animations: {
             self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }, completion: nil)
@@ -112,8 +119,10 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     
     //还原动画
     func restore() {
-        UIView.animate(withDuration: animationTimeInterval, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
-            self.transform = CGAffineTransform.identity
+        if self.transform == CGAffineTransform.identity { return }
+        print("还原")
+        UIView.animate(withDuration: max(animationTimeInterval,0.1), delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
+            self.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }
 }
