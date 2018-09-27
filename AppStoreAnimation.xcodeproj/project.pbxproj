@@ -18,8 +18,9 @@
 		265D8206215B707E00A792F2 /* AppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8205215B707E00A792F2 /* AppVC.swift */; };
 		265D8208215B709600A792F2 /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8207215B709600A792F2 /* UpdateVC.swift */; };
 		265D820A215B70A900A792F2 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8209215B70A900A792F2 /* SearchVC.swift */; };
-		265D820D215B8A6700A792F2 /* TodayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D820C215B8A6700A792F2 /* TodayTableView.swift */; };
 		265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8213215B91B400A792F2 /* TodayCardCell.swift */; };
+		265D8216215CCE5D00A792F2 /* TodayCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8215215CCE5D00A792F2 /* TodayCollectionView.swift */; };
+		265D8218215CD63C00A792F2 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8217215CD63C00A792F2 /* TodayView.swift */; };
 		26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0EBED215BC473000CACB8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +38,9 @@
 		265D8205215B707E00A792F2 /* AppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVC.swift; sourceTree = "<group>"; };
 		265D8207215B709600A792F2 /* UpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVC.swift; sourceTree = "<group>"; };
 		265D8209215B70A900A792F2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
-		265D820C215B8A6700A792F2 /* TodayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableView.swift; sourceTree = "<group>"; };
 		265D8213215B91B400A792F2 /* TodayCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardCell.swift; sourceTree = "<group>"; };
+		265D8215215CCE5D00A792F2 /* TodayCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionView.swift; sourceTree = "<group>"; };
+		265D8217215CD63C00A792F2 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		26F0EBED215BC473000CACB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				265D820B215B8A2800A792F2 /* View */,
+				265D8215215CCE5D00A792F2 /* TodayCollectionView.swift */,
+				265D8217215CD63C00A792F2 /* TodayView.swift */,
 				265D8201215B705E00A792F2 /* TodayVC.swift */,
 			);
 			path = Today;
@@ -142,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				265D820E215B8A6F00A792F2 /* Cell */,
-				265D820C215B8A6700A792F2 /* TodayTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,10 +235,11 @@
 				265D81FC215B6B6500A792F2 /* TabVC.swift in Sources */,
 				265D8202215B705E00A792F2 /* TodayVC.swift in Sources */,
 				265D8204215B706F00A792F2 /* GameVC.swift in Sources */,
-				265D820D215B8A6700A792F2 /* TodayTableView.swift in Sources */,
 				265D8206215B707E00A792F2 /* AppVC.swift in Sources */,
 				265D81E4215B642E00A792F2 /* AppDelegate.swift in Sources */,
 				26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */,
+				265D8216215CCE5D00A792F2 /* TodayCollectionView.swift in Sources */,
+				265D8218215CD63C00A792F2 /* TodayView.swift in Sources */,
 				265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +387,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8K5W74R456;
 				INFOPLIST_FILE = AppStoreAnimation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -401,6 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8K5W74R456;
 				INFOPLIST_FILE = AppStoreAnimation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

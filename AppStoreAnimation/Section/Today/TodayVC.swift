@@ -8,19 +8,24 @@
 
 import UIKit
 
+//手指最大移动距离
+private let maxMoveDistance:CGFloat = 20.0
 class TodayVC: UIViewController {
 
+    var beginOffsetY: CGFloat?
+    var currentTouchCell: TodayCardCell?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Today"
         
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-        collectionView.register(TodayCardCell.self)
-        layout.itemSize = CGSize(width: ScreenWidth-30, height: (ScreenWidth-30)*1.3)
-        layout.minimumLineSpacing = 20
+        collectionView.delegate = self
+        collectionView.dataSource = self
+//        collectionView.registerReusableCell(TodayCardCell.self)
+        layout.itemSize = CGSize(width: ScreenWidth-40, height: (ScreenWidth-40)*1.2)
+        layout.minimumLineSpacing = 30
         layout.minimumInteritemSpacing = 20
         // Do any additional setup after loading the view.
     }
@@ -35,6 +40,7 @@ class TodayVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }
 
@@ -48,8 +54,25 @@ extension TodayVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as TodayCardCell
+        let cell = collectionView.dequeueReusableCell(indexPath: indexPath) as TodayCardCell
+        cell.touchClosure = {
+            (cell) in
+            self.currentTouchCell = cell
+        }
         return cell
     }
 
+}
+
+extension TodayVC: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        beginOffsetY = scrollView.contentOffset.y
+    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let offsetYDiff = abs(offsetY - beginOffsetY!)
+//        if offsetYDiff > maxMoveDistance {
+//            
+//        }
+//    }
 }

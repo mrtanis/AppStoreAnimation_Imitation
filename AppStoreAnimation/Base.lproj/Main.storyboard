@@ -68,11 +68,11 @@
         <scene sceneID="GNW-U6-Wva">
             <objects>
                 <viewController id="r53-rD-db1" customClass="TodayVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pVw-9d-0zr">
+                    <view key="view" contentMode="scaleToFill" id="pVw-9d-0zr" customClass="TodayView" customModule="AppStoreAnimation" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="no9-3a-n3m">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="no9-3a-n3m" customClass="TodayCollectionView" customModule="AppStoreAnimation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DdH-e0-UoW">
@@ -82,7 +82,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mII-gu-Ipf" customClass="TodayCardCell" customModule="AppStoreAnimation" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayCardCell" id="mII-gu-Ipf" customClass="TodayCardCell" customModule="AppStoreAnimation" customModuleProvider="target">
                                         <rect key="frame" x="12" y="0.0" width="351" height="301"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
