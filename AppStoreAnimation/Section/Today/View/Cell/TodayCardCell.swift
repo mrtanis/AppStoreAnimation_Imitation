@@ -25,9 +25,11 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     //恢复动画是否执行
     var restoreExcuted = false {
         didSet {
-//            print("恢复动画bool值被设置")
+            print("恢复动画bool值被设置\(restoreExcuted)")
         }
     }
+    //手指是否在cell上
+    var isFingerOn = false
     
     
     override func awakeFromNib() {
@@ -39,7 +41,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowRadius = 15
-        self.layer.shadowOpacity = 0.6
+        self.layer.shadowOpacity = 0.4
 //        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 15).cgPath
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
@@ -56,6 +58,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
                 closure(self)
             }
             
+            isFingerOn = true
             beginPoint = point
             beginTime = CFAbsoluteTimeGetCurrent()
             shrink()
@@ -87,8 +90,9 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchEnded")
-            calculateTimeInterval()
-            restore()
+        calculateTimeInterval()
+        restore()
+        isFingerOn = false
         restoreExcuted = false
     }
     
@@ -96,8 +100,9 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchEnded")
-            calculateTimeInterval()
-            restore()
+        calculateTimeInterval()
+        restore()
+        isFingerOn = false
         restoreExcuted = false
     }
     
@@ -121,8 +126,9 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     func restore() {
         if self.transform == CGAffineTransform.identity { return }
         print("还原")
-        UIView.animate(withDuration: max(animationTimeInterval,0.1), delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
+        UIView.animate(withDuration: max(animationTimeInterval,0.2), delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
             self.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }
 }
+

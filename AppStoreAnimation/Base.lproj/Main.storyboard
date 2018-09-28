@@ -14,7 +14,7 @@
         <scene sceneID="kOs-cl-1r0">
             <objects>
                 <tabBarController id="Abw-P0-ad9" customClass="TabVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XgA-Rc-Kqy">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XgA-Rc-Kqy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +51,7 @@
         <scene sceneID="vkN-Lr-Rjd">
             <objects>
                 <navigationController id="SiE-iR-qHq" customClass="NavVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Today" id="kBc-k0-kPj"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="tabIcon_today" id="kBc-k0-kPj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uQ1-bi-G2x">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -68,39 +68,39 @@
         <scene sceneID="GNW-U6-Wva">
             <objects>
                 <viewController id="r53-rD-db1" customClass="TodayVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pVw-9d-0zr" customClass="TodayView" customModule="AppStoreAnimation" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="pVw-9d-0zr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="no9-3a-n3m" customClass="TodayCollectionView" customModule="AppStoreAnimation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="no9-3a-n3m">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DdH-e0-UoW">
-                                    <size key="itemSize" width="351" height="301"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="itemSize" width="293" height="190"/>
+                                    <size key="headerReferenceSize" width="50" height="242"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayCardCell" id="mII-gu-Ipf" customClass="TodayCardCell" customModule="AppStoreAnimation" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="0.0" width="351" height="301"/>
+                                        <rect key="frame" x="41" y="242" width="293" height="190"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="351" height="301"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SXg-FQ-3IQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="301"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOSDevelopLogo" translatesAutoresizingMaskIntoConstraints="NO" id="SXg-FQ-3IQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="293" height="190"/>
                                                     <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生活解决方案" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-VS-VjA">
-                                                    <rect key="frame" x="15" y="12" width="321" height="18"/>
+                                                    <rect key="frame" x="15" y="12" width="263" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帮你找份理想工作" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-qU-Lrm">
-                                                    <rect key="frame" x="12" y="36" width="327" height="33"/>
+                                                    <rect key="frame" x="12" y="36" width="269" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -121,19 +121,56 @@
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TodayCardHeaderView" id="1We-iw-vL6" customClass="TodayCardHeaderView" customModule="AppStoreAnimation" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9月28日 星期五" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjM-T7-Ob6">
+                                            <rect key="frame" x="20" y="28" width="108" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifs-Ay-ce9">
+                                            <rect key="frame" x="20" y="56" width="102" height="42"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="42" id="MQs-1l-r8f"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_boy" translatesAutoresizingMaskIntoConstraints="NO" id="BkB-kx-Wrl">
+                                            <rect key="frame" x="315" y="43" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="3Vm-Xx-aRO"/>
+                                                <constraint firstAttribute="height" constant="40" id="9w3-CJ-Xpo"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cjM-T7-Ob6" firstAttribute="leading" secondItem="1We-iw-vL6" secondAttribute="leading" constant="20" id="0VQ-pJ-WI3"/>
+                                        <constraint firstItem="Ifs-Ay-ce9" firstAttribute="leading" secondItem="1We-iw-vL6" secondAttribute="leading" constant="20" id="2bw-nm-9P9"/>
+                                        <constraint firstAttribute="trailing" secondItem="BkB-kx-Wrl" secondAttribute="trailing" constant="20" id="Y12-5U-ep2"/>
+                                        <constraint firstItem="Ifs-Ay-ce9" firstAttribute="top" secondItem="cjM-T7-Ob6" secondAttribute="bottom" constant="10" id="bj7-Tv-KEV"/>
+                                        <constraint firstItem="BkB-kx-Wrl" firstAttribute="bottom" secondItem="Ifs-Ay-ce9" secondAttribute="bottom" constant="-15" id="lde-py-vrI"/>
+                                        <constraint firstItem="cjM-T7-Ob6" firstAttribute="top" secondItem="1We-iw-vL6" secondAttribute="topMargin" constant="20" id="yMK-2I-ixl"/>
+                                    </constraints>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="no9-3a-n3m" firstAttribute="trailing" secondItem="4nb-Ec-b6k" secondAttribute="trailing" id="321-c0-6qW"/>
                             <constraint firstItem="no9-3a-n3m" firstAttribute="leading" secondItem="4nb-Ec-b6k" secondAttribute="leading" id="fhT-fJ-rvQ"/>
-                            <constraint firstItem="no9-3a-n3m" firstAttribute="bottom" secondItem="4nb-Ec-b6k" secondAttribute="bottom" id="wEo-zQ-dpP"/>
+                            <constraint firstItem="no9-3a-n3m" firstAttribute="bottom" secondItem="4nb-Ec-b6k" secondAttribute="bottom" constant="49" id="wEo-zQ-dpP"/>
                             <constraint firstItem="no9-3a-n3m" firstAttribute="top" secondItem="4nb-Ec-b6k" secondAttribute="top" id="ySX-zp-tgV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4nb-Ec-b6k"/>
                     </view>
                     <navigationItem key="navigationItem" id="veH-Rk-US0"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="no9-3a-n3m" id="zPr-bL-luN"/>
                         <outlet property="layout" destination="DdH-e0-UoW" id="Z0q-hT-EtU"/>
@@ -147,7 +184,7 @@
         <scene sceneID="8Hd-rv-E7f">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wi4-Hz-CTb" customClass="NavVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="游戏" id="LeT-3q-77B"/>
+                    <tabBarItem key="tabBarItem" title="游戏" image="tabIcon_game" id="LeT-3q-77B"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ri9-ra-ph9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -214,7 +251,7 @@
         <scene sceneID="jfo-tY-0nv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Knz-9S-NBI" customClass="NavVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="App" id="RM7-eo-jtf"/>
+                    <tabBarItem key="tabBarItem" title="App" image="tabIcon_app" id="RM7-eo-jtf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iu5-HN-Zl9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -233,7 +270,7 @@
         <scene sceneID="J0P-mW-iAK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HAE-Jn-qkL" customClass="NavVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="更新" id="JUK-vn-DFJ"/>
+                    <tabBarItem key="tabBarItem" title="更新" image="tabIcon_update" id="JUK-vn-DFJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hid-U9-iaG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -252,7 +289,7 @@
         <scene sceneID="VPm-VN-eoZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djD-iN-eqZ" customClass="NavVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="搜索" id="7r0-3U-K0W"/>
+                    <tabBarItem key="tabBarItem" title="搜索" image="tabIcon_search" id="7r0-3U-K0W"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fx8-8W-Anl">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -268,4 +305,13 @@
             <point key="canvasLocation" x="-490.39999999999998" y="2666.7166416791606"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iOSDevelopLogo" width="1024" height="1024"/>
+        <image name="icon_boy" width="100" height="100"/>
+        <image name="tabIcon_app" width="24" height="24"/>
+        <image name="tabIcon_game" width="24" height="24"/>
+        <image name="tabIcon_search" width="24" height="24"/>
+        <image name="tabIcon_today" width="24" height="24"/>
+        <image name="tabIcon_update" width="24" height="24"/>
+    </resources>
 </document>

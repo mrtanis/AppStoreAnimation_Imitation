@@ -15,15 +15,17 @@ class TodayVC: UIViewController {
     var beginOffsetY: CGFloat?
     var currentTouchCell: TodayCardCell?
     
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         title = "Today"
         
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.registerReusableCell(TodayCardCell.self)
+//        collectionView.registerReusableSupplementaryView(elementKind: UICollectionView.elementKindSectionHeader, TodayCardHeaderView.self)
         layout.itemSize = CGSize(width: ScreenWidth-40, height: (ScreenWidth-40)*1.2)
         layout.minimumLineSpacing = 30
         layout.minimumInteritemSpacing = 20
@@ -62,21 +64,53 @@ extension TodayVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var headerView = UICollectionReusableView()
+        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 0{
+            headerView = collectionView.dequeueReusableSupplementaryView(elementKind: kind, indexPath: indexPath) as TodayCardHeaderView
+        }
+        return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: ScreenWidth, height: 108)
+        } else {
+            return CGSize.zero
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 1 {
+            return UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
+        } else {
+            return UIEdgeInsets.zero
+        }
+    }
+}
+
+extension TodayVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
+    }
 }
 
 extension TodayVC: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         beginOffsetY = scrollView.contentOffset.y
+        if let cell = currentTouchCell {
+            cell.isFingerOn = true
+        }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollViewDidScroll")
+//        print("scrollViewDidScroll")
         guard let beginOffsetY = self.beginOffsetY else {
             return
         }
         let offsetY = scrollView.contentOffset.y
         let offsetYDiff = abs(offsetY - beginOffsetY)
         if offsetYDiff > maxMoveDistance {
-            if let cell = currentTouchCell, cell.restoreExcuted == false {
+            if let cell = currentTouchCell, cell.restoreExcuted == false, cell.isFingerOn {
                 cell.restoreExcuted = true
                 cell.calculateTimeInterval()
                 cell.restore()
@@ -85,9 +119,10 @@ extension TodayVC: UIScrollViewDelegate {
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         print("scrollViewWillEndDragging")
-        guard let beginOffsetY = self.beginOffsetY , let cell = currentTouchCell else {
+        guard let cell = currentTouchCell else {
             return
         }
+        cell.isFingerOn = false
         cell.calculateTimeInterval()
         cell.restore()
         cell.restoreExcuted = false

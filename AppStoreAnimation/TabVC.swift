@@ -13,6 +13,7 @@ class TabVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tabBar.isTranslucent = true
         // Do any additional setup after loading the view.
     }
     
