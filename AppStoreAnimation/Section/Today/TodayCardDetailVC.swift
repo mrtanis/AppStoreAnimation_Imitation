@@ -12,10 +12,13 @@ class TodayCardDetailVC: UIViewController {
 
     var statusBarHidden = true
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var headerImageTop: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        scrollView.delegate = self
+//        scrollView.contentOffset = CGPoint(x: 0, y: 300)
+//        scrollView.contentInset = UIEdgeInsets(top: 439, left: 0, bottom: 0, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,5 +45,16 @@ class TodayCardDetailVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return statusBarHidden
+    }
+}
+
+extension TodayCardDetailVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        if offsetY < 0 {
+            headerImageTop.constant = offsetY
+        } else {
+            headerImageTop.constant = 0
+        }
     }
 }

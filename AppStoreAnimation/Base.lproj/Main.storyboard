@@ -199,10 +199,10 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdd-eX-xXv">
-                                        <rect key="frame" x="0.0" y="466" width="375" height="129"/>
+                                        <rect key="frame" x="0.0" y="466" width="375" height="700"/>
                                         <color key="backgroundColor" red="0.13725490200000001" green="0.5450980392" blue="0.99607843139999996" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="129" id="7Uu-yd-CTE"/>
+                                            <constraint firstAttribute="height" constant="700" id="7Uu-yd-CTE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -219,6 +219,7 @@
                                     <constraint firstAttribute="trailing" secondItem="vn3-oP-o9T" secondAttribute="trailing" id="mLg-cJ-YgP"/>
                                     <constraint firstItem="vn3-oP-o9T" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="yFU-W3-Fin"/>
                                 </constraints>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="439" maxX="0.0" maxY="0.0"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -235,6 +236,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="headerImageTop" destination="KPH-fs-uqV" id="SyG-Nc-mNL"/>
+                        <outlet property="scrollView" destination="5fJ-Sf-yUV" id="Mzb-df-Q8g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIj-2d-OdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
