@@ -33,17 +33,25 @@ class TodayVC: UIViewController {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "TodayCardDetailSegue" {
+            let detailVC = segue.destination as! TodayCardDetailVC
+            detailVC.hidesBottomBarWhenPushed = true
+        }
     }
-    */
+
     
 
+}
+
+extension TodayVC: JumpToCardDetailDelegate {
+    func jumpToCardDetail(fromCell cell: TodayCardCell) {
+        self.performSegue(withIdentifier: "TodayCardDetailSegue", sender: nil)
+    }
 }
 
 extension TodayVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -57,6 +65,7 @@ extension TodayVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(indexPath: indexPath) as TodayCardCell
+        cell.delegate = self
         cell.touchClosure = {
             (cell) in
             self.currentTouchCell = cell

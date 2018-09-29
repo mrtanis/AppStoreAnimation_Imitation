@@ -13,9 +13,15 @@ private let animationTotalTime = 0.3
 //手指最大移动距离
 private let maxMoveDistance:CGFloat = 20.0
 
+//跳转详情代理
+ @objc protocol JumpToCardDetailDelegate: NSObjectProtocol {
+    @objc func jumpToCardDetail(fromCell cell:TodayCardCell)
+}
+
 class TodayCardCell: UICollectionViewCell, Reusable {
     var touchClosure : ((_ cell:TodayCardCell) -> ())?
-    
+    //跳转详情代理
+    weak var delegate: JumpToCardDetailDelegate?
     //最初触摸点
     var beginPoint: CGPoint?
     //最初触摸时间
@@ -90,8 +96,12 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchEnded")
-        calculateTimeInterval()
-        restore()
+        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(JumpToCardDetailDelegate.jumpToCardDetail(fromCell:))) {
+            
+            delegeteOK.jumpToCardDetail(fromCell: self)
+        }
+//        calculateTimeInterval()
+//        restore()
         isFingerOn = false
         restoreExcuted = false
     }

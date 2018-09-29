@@ -174,11 +174,71 @@
                     <connections>
                         <outlet property="collectionView" destination="no9-3a-n3m" id="zPr-bL-luN"/>
                         <outlet property="layout" destination="DdH-e0-UoW" id="Z0q-hT-EtU"/>
+                        <segue destination="SLt-S1-sm1" kind="show" identifier="TodayCardDetailSegue" id="DH9-7u-HzG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ux-Qa-mTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="492" y="-72.413793103448285"/>
+        </scene>
+        <!--Today Card DetailVC-->
+        <scene sceneID="6kF-LQ-CIS">
+            <objects>
+                <viewController id="SLt-S1-sm1" customClass="TodayCardDetailVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vgv-Pr-Ws6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Sf-yUV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOSDevelopLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vn3-oP-o9T">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="439"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="439" id="pfW-cr-Zxr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdd-eX-xXv">
+                                        <rect key="frame" x="0.0" y="466" width="375" height="129"/>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.5450980392" blue="0.99607843139999996" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="129" id="7Uu-yd-CTE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14117647059999999" green="0.7843137255" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstItem="vn3-oP-o9T" firstAttribute="top" secondItem="5fJ-Sf-yUV" secondAttribute="top" id="KPH-fs-uqV"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jdd-eX-xXv" secondAttribute="trailing" id="QdM-wc-9Fy"/>
+                                    <constraint firstItem="Jdd-eX-xXv" firstAttribute="top" secondItem="vn3-oP-o9T" secondAttribute="bottom" constant="27" id="V1Z-Ap-MIE"/>
+                                    <constraint firstItem="Jdd-eX-xXv" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="ae5-l7-fMB"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jdd-eX-xXv" secondAttribute="bottom" constant="52" id="fOH-HL-a77"/>
+                                    <constraint firstAttribute="trailing" secondItem="vn3-oP-o9T" secondAttribute="trailing" id="mLg-cJ-YgP"/>
+                                    <constraint firstItem="vn3-oP-o9T" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="yFU-W3-Fin"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5fJ-Sf-yUV" firstAttribute="top" secondItem="lHk-5s-iil" secondAttribute="top" id="51s-kC-G7b"/>
+                            <constraint firstItem="Jdd-eX-xXv" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" id="CoQ-jS-LlA"/>
+                            <constraint firstAttribute="bottom" secondItem="5fJ-Sf-yUV" secondAttribute="bottom" id="WEl-dY-6JG"/>
+                            <constraint firstItem="5fJ-Sf-yUV" firstAttribute="leading" secondItem="lHk-5s-iil" secondAttribute="leading" id="hcr-fz-zmX"/>
+                            <constraint firstItem="5fJ-Sf-yUV" firstAttribute="trailing" secondItem="lHk-5s-iil" secondAttribute="trailing" id="szt-QZ-5Lg"/>
+                            <constraint firstItem="vn3-oP-o9T" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" id="xlk-xR-wKj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lHk-5s-iil"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pIj-2d-OdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1424.8" y="-77.811094452773617"/>
         </scene>
         <!--游戏-->
         <scene sceneID="8Hd-rv-E7f">
