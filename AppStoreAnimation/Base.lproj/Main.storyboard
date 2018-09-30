@@ -192,12 +192,24 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Sf-yUV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOSDevelopLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vn3-oP-o9T">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtM-aj-rcl">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="439"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOSDevelopLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vn3-oP-o9T">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="439"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="439" id="pfW-cr-Zxr"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="439" id="pfW-cr-Zxr"/>
+                                            <constraint firstAttribute="trailing" secondItem="vn3-oP-o9T" secondAttribute="trailing" id="8Bo-1E-dKW"/>
+                                            <constraint firstItem="vn3-oP-o9T" firstAttribute="top" secondItem="XtM-aj-rcl" secondAttribute="top" id="Hpq-xD-h4R"/>
+                                            <constraint firstAttribute="height" constant="439" id="WsP-3Z-Zob"/>
+                                            <constraint firstItem="vn3-oP-o9T" firstAttribute="leading" secondItem="XtM-aj-rcl" secondAttribute="leading" id="zVZ-jx-VUX"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdd-eX-xXv">
                                         <rect key="frame" x="0.0" y="466" width="375" height="700"/>
                                         <color key="backgroundColor" red="0.13725490200000001" green="0.5450980392" blue="0.99607843139999996" alpha="1" colorSpace="deviceRGB"/>
@@ -211,13 +223,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.14117647059999999" green="0.7843137255" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstItem="vn3-oP-o9T" firstAttribute="top" secondItem="5fJ-Sf-yUV" secondAttribute="top" id="KPH-fs-uqV"/>
+                                    <constraint firstItem="XtM-aj-rcl" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="LP0-EP-OTg"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jdd-eX-xXv" secondAttribute="trailing" id="QdM-wc-9Fy"/>
-                                    <constraint firstItem="Jdd-eX-xXv" firstAttribute="top" secondItem="vn3-oP-o9T" secondAttribute="bottom" constant="27" id="V1Z-Ap-MIE"/>
+                                    <constraint firstItem="XtM-aj-rcl" firstAttribute="top" secondItem="5fJ-Sf-yUV" secondAttribute="top" id="YQS-RS-05p"/>
                                     <constraint firstItem="Jdd-eX-xXv" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="ae5-l7-fMB"/>
+                                    <constraint firstAttribute="trailing" secondItem="XtM-aj-rcl" secondAttribute="trailing" id="b6G-gd-2HP"/>
                                     <constraint firstAttribute="bottom" secondItem="Jdd-eX-xXv" secondAttribute="bottom" constant="52" id="fOH-HL-a77"/>
-                                    <constraint firstAttribute="trailing" secondItem="vn3-oP-o9T" secondAttribute="trailing" id="mLg-cJ-YgP"/>
-                                    <constraint firstItem="vn3-oP-o9T" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="yFU-W3-Fin"/>
+                                    <constraint firstItem="Jdd-eX-xXv" firstAttribute="top" secondItem="XtM-aj-rcl" secondAttribute="bottom" constant="27" id="nuO-Zy-KM3"/>
                                 </constraints>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="439" maxX="0.0" maxY="0.0"/>
                             </scrollView>
@@ -228,8 +240,8 @@
                             <constraint firstItem="Jdd-eX-xXv" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" id="CoQ-jS-LlA"/>
                             <constraint firstAttribute="bottom" secondItem="5fJ-Sf-yUV" secondAttribute="bottom" id="WEl-dY-6JG"/>
                             <constraint firstItem="5fJ-Sf-yUV" firstAttribute="leading" secondItem="lHk-5s-iil" secondAttribute="leading" id="hcr-fz-zmX"/>
+                            <constraint firstItem="XtM-aj-rcl" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" id="i4t-Nk-Dat"/>
                             <constraint firstItem="5fJ-Sf-yUV" firstAttribute="trailing" secondItem="lHk-5s-iil" secondAttribute="trailing" id="szt-QZ-5Lg"/>
-                            <constraint firstItem="vn3-oP-o9T" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" id="xlk-xR-wKj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lHk-5s-iil"/>
                     </view>
@@ -237,7 +249,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="headerImageTop" destination="KPH-fs-uqV" id="SyG-Nc-mNL"/>
+                        <outlet property="headerImageTop" destination="Hpq-xD-h4R" id="Bgj-Yk-BFX"/>
                         <outlet property="scrollView" destination="5fJ-Sf-yUV" id="Mzb-df-Q8g"/>
                     </connections>
                 </viewController>
