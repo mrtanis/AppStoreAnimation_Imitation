@@ -24,6 +24,7 @@
 		265D821E215E0EC800A792F2 /* TodayCardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265D821D215E0EC800A792F2 /* TodayCardHeaderView.xib */; };
 		26B52EC7215F5676009B18E1 /* TodayCardDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B52EC6215F5676009B18E1 /* TodayCardDetailVC.swift */; };
 		26B52EC9215F56B6009B18E1 /* ExtendPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B52EC8215F56B6009B18E1 /* ExtendPresentAnimationController.swift */; };
+		26B52ECC21606ECF009B18E1 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B52ECB21606ECF009B18E1 /* BaseVC.swift */; };
 		26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0EBED215BC473000CACB8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		265D821D215E0EC800A792F2 /* TodayCardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCardHeaderView.xib; sourceTree = "<group>"; };
 		26B52EC6215F5676009B18E1 /* TodayCardDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardDetailVC.swift; sourceTree = "<group>"; };
 		26B52EC8215F56B6009B18E1 /* ExtendPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendPresentAnimationController.swift; sourceTree = "<group>"; };
+		26B52ECB21606ECF009B18E1 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		26F0EBED215BC473000CACB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,9 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				265D81E3215B642E00A792F2 /* AppDelegate.swift */,
-				265D81FB215B6B6500A792F2 /* TabVC.swift */,
-				265D81FF215B6CDD00A792F2 /* NavVC.swift */,
 				26F0EBED215BC473000CACB8 /* Extensions.swift */,
+				26B52ECA21606E6B009B18E1 /* Base */,
 				265D81F5215B6AB200A792F2 /* Section */,
 				265D81E7215B642E00A792F2 /* Main.storyboard */,
 				265D81EA215B643000A792F2 /* Assets.xcassets */,
@@ -167,6 +168,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		26B52ECA21606E6B009B18E1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				265D81FB215B6B6500A792F2 /* TabVC.swift */,
+				265D81FF215B6CDD00A792F2 /* NavVC.swift */,
+				26B52ECB21606ECF009B18E1 /* BaseVC.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,6 +254,7 @@
 				265D8208215B709600A792F2 /* UpdateVC.swift in Sources */,
 				265D8200215B6CDD00A792F2 /* NavVC.swift in Sources */,
 				265D81FC215B6B6500A792F2 /* TabVC.swift in Sources */,
+				26B52ECC21606ECF009B18E1 /* BaseVC.swift in Sources */,
 				265D8202215B705E00A792F2 /* TodayVC.swift in Sources */,
 				265D821C215DD90800A792F2 /* TodayCardFooterView.swift in Sources */,
 				265D8204215B706F00A792F2 /* GameVC.swift in Sources */,

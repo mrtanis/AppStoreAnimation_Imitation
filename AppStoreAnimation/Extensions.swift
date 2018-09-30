@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 
+// MARK: - 全局常量
 let ScreenWidth = UIScreen.main.bounds.width
 let ScreenHeight = UIScreen.main.bounds.height
 
 
+// MARK: - 快速注册调用cell、reusableView
 protocol Reusable: class {
     static var reuseIdentifier: String { get }
     static var nib: UINib? { get }
@@ -77,6 +79,7 @@ extension UICollectionView {
     }
 }
 
+// MARK: - 根据颜色生成图片
 extension UIImage {
     class func imageWithColor(color: UIColor) -> UIImage {
         let rect: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
@@ -88,6 +91,5 @@ extension UIImage {
         return image
     }
 }
-
 
 

@@ -8,9 +8,7 @@
 
 import UIKit
 
-class TodayCardDetailVC: UIViewController {
-
-    var statusBarHidden = true
+class TodayCardDetailVC: BaseVC {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerImageTop: NSLayoutConstraint!
@@ -23,14 +21,13 @@ class TodayCardDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNeedsStatusBarAppearanceUpdate()
+        setStatusBar(forHidden: true)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.statusBarHidden = false
-        self.setNeedsStatusBarAppearanceUpdate()
+        setStatusBar(forHidden: false)
     }
     /*
     // MARK: - Navigation
@@ -42,10 +39,6 @@ class TodayCardDetailVC: UIViewController {
     }
     */
 
-    
-    override var prefersStatusBarHidden: Bool {
-        return statusBarHidden
-    }
 }
 
 extension TodayCardDetailVC: UIScrollViewDelegate {
