@@ -174,10 +174,11 @@
 		26615A2E2161160900E837F3 /* DetailCell */ = {
             isa = PBXGroup;
             children = (
-            26615A2F2161169100E837F3 /* TodayCardDetailCell.swift */,
+                26615A2F2161169100E837F3 /* TodayCardDetailCell.swift */,
+            );
             path = DetailCell;
             sourceTree = "<group>";
-            };
+        };
 		26B52ECA21606E6B009B18E1 /* Base */ = {
             isa = PBXGroup;
             children = (
