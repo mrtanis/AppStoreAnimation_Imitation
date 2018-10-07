@@ -34,11 +34,18 @@ class TodayCardCell: UICollectionViewCell, Reusable {
             print("恢复动画bool值被设置\(restoreExcuted)")
         }
     }
+    //缩小动画是或否执行完毕
+    var shrinkFinished = false
     //手指是否在cell上
     var isFingerOn = false
     
+    //图片视图宽度
+    @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     
     override func awakeFromNib() {
+        //设置图片视图宽度
+        imageViewWidth.constant = ScreenWidth
+        
         //圆角
         self.contentView.layer.cornerRadius = 15
         self.contentView.layer.masksToBounds = true
@@ -96,7 +103,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchEnded")
-        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(JumpToCardDetailDelegate.jumpToCardDetail(fromCell:))) {
+        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(JumpToCardDetailDelegate.jumpToCardDetail(fromCell:))), shrinkFinished == true {
             
             delegeteOK.jumpToCardDetail(fromCell: self)
         }
@@ -127,9 +134,16 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     func shrink() {
         if self.transform != CGAffineTransform.identity { return }
         print("缩小")
+        self.shrinkFinished = false
         UIView.animate(withDuration: animationTotalTime, delay: 0, options: .allowUserInteraction, animations: {
             self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }, completion: nil)
+        }, completion: { (finished) in
+            self.shrinkFinished = true
+            if let delegeteOK = self.delegate, delegeteOK.responds(to: #selector(JumpToCardDetailDelegate.jumpToCardDetail(fromCell:))), self.isFingerOn == false {
+                
+                delegeteOK.jumpToCardDetail(fromCell: self)
+            }
+        })
     }
     
     //还原动画

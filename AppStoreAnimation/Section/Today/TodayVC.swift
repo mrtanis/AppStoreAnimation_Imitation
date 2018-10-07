@@ -39,7 +39,8 @@ class TodayVC: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TodayCardDetailSegue" {
-            
+            let toVC = segue.destination
+            toVC.transitioningDelegate = self
         }
     }
 
@@ -134,5 +135,12 @@ extension TodayVC: UIScrollViewDelegate {
         cell.calculateTimeInterval()
         cell.restore()
         cell.restoreExcuted = false
+    }
+}
+
+extension TodayVC: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return ExtendPresentAnimationController(originFrame: (currentTouchCell!.convert(currentTouchCell!.bounds, to: self.view)))
     }
 }
