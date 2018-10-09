@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
@@ -49,6 +50,42 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         snapshot.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
         //添加两个标题
+        let title1 = UILabel().then {
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.textColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1)
+            $0.text = "生活解决方案"
+        }
+        snapContainer.addSubview(title1)
+        title1.sizeToFit()
+        title1.frame = CGRect(x: 15, y: 15, width: ScreenWidth-30, height: title1.bounds.height)
+        let oldRect = title1.frame
+        title1.layer.anchorPoint = CGPoint(x: 0, y: 0)
+        title1.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        title1.frame = oldRect
+        title1.snp.makeConstraints { (make) in
+            make.left.top.equalTo(15)
+            make.right.equalTo(-15)
+        }
+        
+        
+        let title2 = UILabel().then {
+            $0.font = UIFont.systemFont(ofSize: 27, weight: .heavy)
+            $0.textColor = .white
+            $0.text = "帮你找份理想工作"
+        }
+        snapContainer.addSubview(title2)
+        title2.sizeToFit()
+        title2.frame = CGRect(x: 15, y: title1.frame.maxY + 6, width: ScreenWidth-30, height: title1.bounds.height)
+        let oldRect2 = title2.frame
+        title2.layer.anchorPoint = CGPoint(x: 0, y: 0)
+        title2.frame = oldRect2
+        title2.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        title2.snp.makeConstraints { (make) in
+            make.top.equalTo(title1.snp_bottomMargin).offset(6)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+        }
+        
         
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapContainer)

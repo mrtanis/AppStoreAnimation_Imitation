@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+// MARK: - 全局import
+@_exported import SnapKit
+@_exported import Then
+@_exported import Moya
+
 // MARK: - 全局常量
 let ScreenWidth = UIScreen.main.bounds.width
 let ScreenHeight = UIScreen.main.bounds.height
