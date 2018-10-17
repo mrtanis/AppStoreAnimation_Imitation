@@ -10,7 +10,7 @@ import UIKit
 
 //手指最大移动距离
 private let maxMoveDistance:CGFloat = 20.0
-class TodayVC: UIViewController {
+class TodayVC: BaseVC {
 
     var beginOffsetY: CGFloat?
     var currentTouchCell: TodayCardCell?
@@ -32,7 +32,13 @@ class TodayVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0.5)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.setTabBarVisible(visible: false, animated: true, timeInterval: 0.5)
+    }
 
     // MARK: - Navigation
 

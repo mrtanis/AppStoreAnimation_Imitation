@@ -194,11 +194,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Sf-yUV">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Sf-yUV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtM-aj-rcl">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="439"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOSDevelopLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vn3-oP-o9T">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
@@ -206,35 +206,17 @@
                                                     <constraint firstAttribute="width" secondItem="vn3-oP-o9T" secondAttribute="height" multiplier="1:1.2" id="H5B-kM-rpp"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生活解决方案" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEh-OR-paU">
-                                                <rect key="frame" x="15" y="15" width="345" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帮你找份理想工作" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALb-ZG-AF1">
-                                                <rect key="frame" x="15" y="39" width="345" height="33"/>
-                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="bEh-OR-paU" secondAttribute="trailing" constant="15" id="0Xn-jx-QNi"/>
+                                            <constraint firstAttribute="width" secondItem="XtM-aj-rcl" secondAttribute="height" multiplier="1:1.2" id="80e-UM-yBz"/>
                                             <constraint firstAttribute="trailing" secondItem="vn3-oP-o9T" secondAttribute="trailing" id="8Bo-1E-dKW"/>
                                             <constraint firstItem="vn3-oP-o9T" firstAttribute="top" secondItem="XtM-aj-rcl" secondAttribute="top" id="Hpq-xD-h4R"/>
-                                            <constraint firstAttribute="trailing" secondItem="ALb-ZG-AF1" secondAttribute="trailing" constant="15" id="TrA-sL-dTW"/>
-                                            <constraint firstAttribute="height" constant="439" id="WsP-3Z-Zob"/>
-                                            <constraint firstItem="bEh-OR-paU" firstAttribute="leading" secondItem="XtM-aj-rcl" secondAttribute="leading" constant="15" id="chy-ul-tbR"/>
-                                            <constraint firstItem="ALb-ZG-AF1" firstAttribute="leading" secondItem="XtM-aj-rcl" secondAttribute="leading" constant="15" id="lbj-6x-cZU"/>
-                                            <constraint firstItem="bEh-OR-paU" firstAttribute="top" secondItem="XtM-aj-rcl" secondAttribute="top" constant="15" id="uBZ-32-513"/>
-                                            <constraint firstItem="ALb-ZG-AF1" firstAttribute="top" secondItem="bEh-OR-paU" secondAttribute="bottom" constant="6" id="usz-RQ-dfx"/>
                                             <constraint firstItem="vn3-oP-o9T" firstAttribute="leading" secondItem="XtM-aj-rcl" secondAttribute="leading" id="zVZ-jx-VUX"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdd-eX-xXv">
-                                        <rect key="frame" x="0.0" y="466" width="375" height="700"/>
+                                        <rect key="frame" x="0.0" y="477" width="375" height="700"/>
                                         <color key="backgroundColor" red="0.13725490200000001" green="0.5450980392" blue="0.99607843139999996" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="700" id="7Uu-yd-CTE"/>
@@ -275,8 +257,6 @@
                         <outlet property="headerImage" destination="vn3-oP-o9T" id="lYn-mQ-4kt"/>
                         <outlet property="headerImageTop" destination="Hpq-xD-h4R" id="Bgj-Yk-BFX"/>
                         <outlet property="scrollView" destination="5fJ-Sf-yUV" id="Mzb-df-Q8g"/>
-                        <outlet property="title1" destination="bEh-OR-paU" id="S7N-fe-sBO"/>
-                        <outlet property="title2" destination="ALb-ZG-AF1" id="jir-0C-AzJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIj-2d-OdO" userLabel="First Responder" sceneMemberID="firstResponder"/>

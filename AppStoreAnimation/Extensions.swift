@@ -17,7 +17,7 @@ import UIKit
 // MARK: - 全局常量
 let ScreenWidth = UIScreen.main.bounds.width
 let ScreenHeight = UIScreen.main.bounds.height
-
+let NavBarHeight = UIApplication.shared.statusBarFrame.height
 
 // MARK: - 快速注册调用cell、reusableView
 protocol Reusable: class {
