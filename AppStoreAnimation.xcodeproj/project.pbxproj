@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1330941D3DC7BBC2147018B0 /* Pods_AppStoreAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED693BA294757E92103D7E1 /* Pods_AppStoreAnimation.framework */; };
 		26187FEC2177262B008F9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26187FEB2177262A008F9C35 /* Main.storyboard */; };
+		2658225F2177627C004A7B44 /* ShrinkDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2658225E2177627C004A7B44 /* ShrinkDismissAnimationController.swift */; };
 		265D81E4215B642E00A792F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D81E3215B642E00A792F2 /* AppDelegate.swift */; };
 		265D81EB215B643000A792F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265D81EA215B643000A792F2 /* Assets.xcassets */; };
 		265D81EE215B643000A792F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265D81EC215B643000A792F2 /* LaunchScreen.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		26187FEB2177262A008F9C35 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2658225E2177627C004A7B44 /* ShrinkDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkDismissAnimationController.swift; sourceTree = "<group>"; };
 		265D81E0215B642E00A792F2 /* AppStoreAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		265D81E3215B642E00A792F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		265D81EA215B643000A792F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				265D8201215B705E00A792F2 /* TodayVC.swift */,
 				26B52EC6215F5676009B18E1 /* TodayCardDetailVC.swift */,
 				26B52EC8215F56B6009B18E1 /* ExtendPresentAnimationController.swift */,
+				2658225E2177627C004A7B44 /* ShrinkDismissAnimationController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */,
 				265D821A215DD8E300A792F2 /* TodayCardHeaderView.swift in Sources */,
 				265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */,
+				2658225F2177627C004A7B44 /* ShrinkDismissAnimationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

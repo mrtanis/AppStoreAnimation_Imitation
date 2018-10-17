@@ -13,9 +13,10 @@ private let animationTotalTime = 0.3
 //手指最大移动距离
 private let maxMoveDistance:CGFloat = 20.0
 
-//跳转详情代理
+//代理
  @objc protocol JumpToCardDetailDelegate: NSObjectProtocol {
     @objc func jumpToCardDetail(fromCell cell:TodayCardCell)
+//    @objc func updateBeginTouchFrame
 }
 
 class TodayCardCell: UICollectionViewCell, Reusable {

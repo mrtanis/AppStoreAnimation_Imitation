@@ -14,6 +14,8 @@ class TodayCardDetailVC: BaseVC {
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var headerImageTop: NSLayoutConstraint!
     
+    var dismissToRect: CGRect?
+    
     var title1: UILabel!
     var title2: UILabel!
     override func viewDidLoad() {
