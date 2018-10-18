@@ -14,15 +14,15 @@ private let animationTotalTime = 0.3
 private let maxMoveDistance:CGFloat = 20.0
 
 //代理
- @objc protocol JumpToCardDetailDelegate: NSObjectProtocol {
+ @objc protocol TodayCardCellDelegate: NSObjectProtocol {
     @objc func jumpToCardDetail(fromCell cell:TodayCardCell)
-//    @objc func updateBeginTouchFrame
+    @objc func updateBeginTouchFrame(cellFrame rect:CGRect, ofCell cell:TodayCardCell)
 }
 
 class TodayCardCell: UICollectionViewCell, Reusable {
     var touchClosure : ((_ cell:TodayCardCell) -> ())?
-    //跳转详情代理
-    weak var delegate: JumpToCardDetailDelegate?
+    //代理
+    weak var delegate: TodayCardCellDelegate?
     //最初触摸点
     var beginPoint: CGPoint?
     //最初触摸时间
@@ -68,6 +68,11 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let isInside = super.point(inside: point, with: event)
         if isInside {
+            
+            if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
+                delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
+            }
+            
             if let closure = touchClosure {
                 closure(self)
             }
@@ -104,7 +109,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchEnded")
-        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(JumpToCardDetailDelegate.jumpToCardDetail(fromCell:))), shrinkFinished == true {
+        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), shrinkFinished == true {
             
             delegeteOK.jumpToCardDetail(fromCell: self)
         }
@@ -140,7 +145,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
             self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }, completion: { (finished) in
             self.shrinkFinished = true
-            if let delegeteOK = self.delegate, delegeteOK.responds(to: #selector(JumpToCardDetailDelegate.jumpToCardDetail(fromCell:))), self.isFingerOn == false {
+            if let delegeteOK = self.delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), self.isFingerOn == false {
                 
                 delegeteOK.jumpToCardDetail(fromCell: self)
             }

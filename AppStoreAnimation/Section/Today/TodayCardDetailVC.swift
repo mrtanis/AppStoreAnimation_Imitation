@@ -74,6 +74,7 @@ class TodayCardDetailVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.transitioningDelegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -110,5 +111,16 @@ extension TodayCardDetailVC: UIScrollViewDelegate {
         } else {
             headerImageTop.constant = 0
         }
+    }
+}
+
+extension TodayCardDetailVC: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if let finalFrame = self.dismissToRect {
+            return ShrinkDismissAnimationController(finalFrame: finalFrame)
+        } else {
+            return nil
+        }
+        
     }
 }

@@ -15,6 +15,7 @@ class TodayVC: BaseVC {
     var beginOffsetY: CGFloat?
     var currentTouchCell: TodayCardCell?
     
+    var currentTouchCellOriginFrame: CGRect?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
@@ -33,11 +34,25 @@ class TodayVC: BaseVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIView.animate(withDuration: 0.5) {
+            self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
+        }
         self.setTabBarVisible(visible: true, animated: true, timeInterval: 0.5)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.setTabBarVisible(visible: false, animated: true, timeInterval: 0.5)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .none)
     }
 
     // MARK: - Navigation
@@ -45,8 +60,9 @@ class TodayVC: BaseVC {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TodayCardDetailSegue" {
-            let toVC = segue.destination
+            let toVC = segue.destination as! TodayCardDetailVC
             toVC.transitioningDelegate = self
+            toVC.dismissToRect = self.currentTouchCellOriginFrame
         }
     }
 
@@ -54,9 +70,17 @@ class TodayVC: BaseVC {
 
 }
 
-extension TodayVC: JumpToCardDetailDelegate {
+extension TodayVC: TodayCardCellDelegate {
+    //跳转详情代理
     func jumpToCardDetail(fromCell cell: TodayCardCell) {
         self.performSegue(withIdentifier: "TodayCardDetailSegue", sender: nil)
+    }
+    //更新点击cell初始frame
+    func updateBeginTouchFrame(cellFrame rect: CGRect, ofCell cell: TodayCardCell) {
+        if self.currentTouchCellOriginFrame == nil {
+            self.currentTouchCellOriginFrame = collectionView.convert(rect, to: self.view)
+        }
+        
     }
 }
 
