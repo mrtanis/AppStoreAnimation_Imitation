@@ -12,8 +12,11 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
     
     private let finalFrame: CGRect
     
-    init(finalFrame: CGRect) {
+    let interactionController: SwipeInteractionController?
+    
+    init(finalFrame: CGRect, interactionController: SwipeInteractionController?) {
         self.finalFrame = finalFrame
+        self.interactionController = interactionController
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -100,7 +103,11 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
             blurView.removeFromSuperview()
             snapshot.removeFromSuperview()
             snapContainer.removeFromSuperview()
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            let success = !transitionContext.transitionWasCancelled
+            if !success {
+                tVC.view.removeFromSuperview()
+            }
+            transitionContext.completeTransition(success)
         }
         
         

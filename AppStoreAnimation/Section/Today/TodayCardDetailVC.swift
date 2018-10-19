@@ -14,12 +14,17 @@ class TodayCardDetailVC: BaseVC {
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var headerImageTop: NSLayoutConstraint!
     
+    var swipeInteractionController: SwipeInteractionController?
+    
     var dismissToRect: CGRect?
     
     var title1: UILabel!
     var title2: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //设置手势转场控制器
+        swipeInteractionController = SwipeInteractionController(viewController: self)
         
         //创建标题
         title1 = UILabel().then {
@@ -117,10 +122,19 @@ extension TodayCardDetailVC: UIScrollViewDelegate {
 extension TodayCardDetailVC: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let finalFrame = self.dismissToRect {
-            return ShrinkDismissAnimationController(finalFrame: finalFrame)
+            return ShrinkDismissAnimationController(finalFrame: finalFrame, interactionController: swipeInteractionController)
         } else {
             return nil
         }
-        
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        guard let animator = animator as? ShrinkDismissAnimationController,
+            let interactionController = animator.interactionController,
+            interactionController.interactionInProgress
+            else {
+                return nil
+        }
+        return interactionController
     }
 }
