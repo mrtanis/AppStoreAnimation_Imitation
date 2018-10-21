@@ -35,24 +35,30 @@ class TodayVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIView.animate(withDuration: 0.5) {
-            self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
-        }
-        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0.5)
+        
+//        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0.5)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        currentTouchCell?.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.setTabBarVisible(visible: false, animated: true, timeInterval: 0.5)
+        
+        
+
+        UIView.animate(withDuration: 0, animations: {
+            self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .slide)
+        }) { (finished) in
+            self.setTabBarVisible(visible: false, animated: true, timeInterval: 0.5)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .none)
+        currentTouchCell?.isHidden = true
     }
 
     // MARK: - Navigation
@@ -63,9 +69,17 @@ class TodayVC: BaseVC {
             let toVC = segue.destination as! TodayCardDetailVC
             toVC.transitioningDelegate = self
             toVC.dismissToRect = self.currentTouchCellOriginFrame
+            toVC.lastVC = self
         }
     }
 
+    
+    func showTabBar() {
+        UIView.animate(withDuration: 0.5) {
+            self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
+        }
+        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0.5)
+    }
     
 
 }

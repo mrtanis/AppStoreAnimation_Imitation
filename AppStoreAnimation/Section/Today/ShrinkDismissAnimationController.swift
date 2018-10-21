@@ -31,6 +31,10 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
                 return
         }
         
+        let tabVC = tVC as! TabVC
+        let navVC = tabVC.selectedViewController as! NavVC
+        let todayVC = navVC.viewControllers.first as! TodayVC
+        
         let containerView = transitionContext.containerView
         //添加将要呈现的VC视图
         containerView.addSubview(tVC.view)

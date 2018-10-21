@@ -69,7 +69,7 @@ class BaseVC: UIViewController {
         //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
         
         // bail if the current state matches the desired state
-        if (tabBarIsVisible() == visible) { return }
+//        if (tabBarIsVisible() == visible) { return }
         
         // get a frame calculation ready
         let frame = self.tabBarController?.tabBar.frame
@@ -81,9 +81,26 @@ class BaseVC: UIViewController {
         
         //  animate the tabBar
         if frame != nil {
-            UIView.animate(withDuration: duration) {
-                self.tabBarController?.tabBar.frame = frame!.offsetBy(dx: 0, dy: offsetY!)
-                return
+            if visible {
+                self.tabBarController?.tabBar.frame = CGRect(x: 0, y: self.view.frame.maxY, width: (frame?.width)!, height: height!)
+                self.tabBarController?.tabBar.isHidden = false
+            } else {
+                self.tabBarController?.tabBar.frame = CGRect(x: 0, y: self.view.frame.maxY - height!, width: (frame?.width)!, height: height!)
+            }
+//            UIView.animate(withDuration: duration) {
+//                self.tabBarController?.tabBar.frame = frame!.offsetBy(dx: 0, dy: offsetY!)
+//                return
+//            }
+            UIView.animate(withDuration: duration, animations: {
+                if visible {
+                    self.tabBarController?.tabBar.frame = CGRect(x: 0, y: self.view.frame.maxY - height!, width: (frame?.width)!, height: height!)
+                } else {
+                    self.tabBarController?.tabBar.frame = CGRect(x: 0, y: self.view.frame.maxY, width: (frame?.width)!, height: height!)
+                }
+            }) { (finished) in
+                if !visible {
+                    self.tabBarController?.tabBar.isHidden = true
+                }
             }
         }
     }

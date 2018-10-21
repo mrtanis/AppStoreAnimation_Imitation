@@ -8,8 +8,18 @@
 
 import UIKit
 
+//代理
+@objc protocol SwipeInteractionDelegate: NSObjectProtocol {
+    @objc func SwipeInteractionAskToShowTabBar()
+}
+
 class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
 
+    //代理
+    weak var delegate: SwipeInteractionDelegate?
+    
+    var delegateCalled = false
+    
     var interactionInProgress = false
     private var shouldCompleteTransition = false
     private weak var viewController: UIViewController!
@@ -42,6 +52,13 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
         // 3
         case .changed:
             shouldCompleteTransition = progress > 0.5
+            if shouldCompleteTransition {
+                if delegateCalled == false, let delegeteOK = delegate, delegeteOK.responds(to: #selector(SwipeInteractionDelegate.SwipeInteractionAskToShowTabBar)) {
+                    delegateCalled = true
+                    delegeteOK.SwipeInteractionAskToShowTabBar()
+                }
+                finish()
+            }
             update(progress)
             
         // 4

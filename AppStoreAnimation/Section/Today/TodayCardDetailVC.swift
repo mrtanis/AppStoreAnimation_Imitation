@@ -18,6 +18,8 @@ class TodayCardDetailVC: BaseVC {
     
     var dismissToRect: CGRect?
     
+    var lastVC: TodayVC?
+    
     var title1: UILabel!
     var title2: UILabel!
     override func viewDidLoad() {
@@ -85,7 +87,7 @@ class TodayCardDetailVC: BaseVC {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 //        UIView.animate(withDuration: 0.5) {
-//            self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
+            self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .none)
 //        }
     }
     /*
@@ -135,6 +137,16 @@ extension TodayCardDetailVC: UIViewControllerTransitioningDelegate {
             else {
                 return nil
         }
+        interactionController.delegate = self
         return interactionController
+    }
+}
+
+extension TodayCardDetailVC: SwipeInteractionDelegate {
+    func SwipeInteractionAskToShowTabBar() {
+        guard let vc = lastVC else {
+            return
+        }
+        vc.showTabBar()
     }
 }
