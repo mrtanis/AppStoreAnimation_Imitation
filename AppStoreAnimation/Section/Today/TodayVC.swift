@@ -21,6 +21,9 @@ class TodayVC: BaseVC {
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         title = "Today"
         
@@ -73,8 +76,12 @@ class TodayVC: BaseVC {
         }
     }
 
+    func delayShowTabBar() {
+        perform(#selector(showTabBar), with: nil, afterDelay: 0.5)
+    }
     
-    func showTabBar() {
+    
+    @objc func showTabBar() {
         UIView.animate(withDuration: 0.5) {
             self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
         }

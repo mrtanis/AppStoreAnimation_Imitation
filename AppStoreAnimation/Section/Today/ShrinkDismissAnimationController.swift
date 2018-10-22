@@ -20,7 +20,7 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1
+        return 0.5
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -61,7 +61,7 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         let title1 = UILabel().then {
             $0.font = UIFont.systemFont(ofSize: 15)
             $0.textColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1)
-            $0.text = "生活解决方案"
+            $0.text = "出游专题"
         }
         snapContainer.addSubview(title1)
         title1.sizeToFit()
@@ -70,7 +70,7 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         let title2 = UILabel().then {
             $0.font = UIFont.systemFont(ofSize: 27, weight: .heavy)
             $0.textColor = .white
-            $0.text = "帮你找份理想工作"
+            $0.text = "与家人一起旅行"
         }
         snapContainer.addSubview(title2)
         title2.sizeToFit()
@@ -82,7 +82,7 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         //开始做动画
         let duration = transitionDuration(using: transitionContext)
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubic, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
                 snapContainer.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 snapshot.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 snapshot.layer.cornerRadius = 13
@@ -92,7 +92,7 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0, animations: {
                 blurView.alpha = 0
             })
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25, animations: {
                 snapshot.transform = CGAffineTransform.identity
                 snapshot.frame = self.finalFrame
                 snapshot.layer.cornerRadius = 15

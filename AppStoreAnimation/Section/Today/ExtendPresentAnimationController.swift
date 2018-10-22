@@ -56,9 +56,9 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         let width = finalFrame.width
         let height = finalFrame.height
         let x = -(finalFrame.width-originFrame.width)*0.5
-        let y = -(finalFrame.height*0.5*0.1+finalFrame.width*0.5*1.2*0.9-originFrame.width*1.2*0.5)
+        let y = -(finalFrame.height*0.5*0.05+finalFrame.width*0.5*1.2*0.95-originFrame.width*1.2*0.5)
         snapshot.frame = CGRect(x: x, y: y, width: width, height: height)
-        snapshot.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        snapshot.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
         //添加两个标题
         //先添加透明视图（大小同详情页顶部图片视图大小）
@@ -75,7 +75,7 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         let title1 = UILabel().then {
             $0.font = UIFont.systemFont(ofSize: 15)
             $0.textColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1)
-            $0.text = "生活解决方案"
+            $0.text = "出游专题"
         }
         clearBG.addSubview(title1)
         title1.sizeToFit()
@@ -84,14 +84,22 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         let title2 = UILabel().then {
             $0.font = UIFont.systemFont(ofSize: 27, weight: .heavy)
             $0.textColor = .white
-            $0.text = "帮你找份理想工作"
+            $0.text = "与家人一起旅行"
         }
         clearBG.addSubview(title2)
         title2.sizeToFit()
         title2.frame = CGRect(x:   12, y:  title1.frame.maxY+6, width: ScreenWidth-30, height: title2.bounds.height)
 
+        //创建关闭按钮
+        let closeBtn = UIButton.init(type: .custom)
+        closeBtn.setImage(UIImage.init(named: "close"), for: .normal)
+        closeBtn.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.5)
+        closeBtn.layer.cornerRadius = 12.5
+        closeBtn.layer.masksToBounds = true
+        clearBG.addSubview(closeBtn)
+        closeBtn.frame = CGRect(x:  clearBG.bounds.width-15-25, y:  15, width: 25, height: 25)
         
-        clearBG.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        clearBG.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapContainer)
@@ -100,13 +108,14 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         let duration = transitionDuration(using: transitionContext)
         
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubic, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.4, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.35, animations: {
                 blurView.alpha = 1
                 snapContainer.frame = CGRect(x: 0, y: -5, width: finalFrame.width, height: finalFrame.height)
                 snapContainer.layer.cornerRadius = 0
                 clearBG.transform = CGAffineTransform.identity
                 title1.frame = CGRect(x: 15, y: 15, width: ScreenWidth-30, height: title1.bounds.height)
                 title2.frame = CGRect(x: 12, y: title1.frame.maxY + 6, width: ScreenWidth-30, height: title2.bounds.height)
+                closeBtn.frame = CGRect(x:  finalFrame.width-15-25, y:  15, width: 25, height: 25)
                 clearBG.frame = CGRect(x: 0, y: 0, width: finalFrame.width, height: finalFrame.width*1.2)
                 snapshot.frame = finalFrame
             })

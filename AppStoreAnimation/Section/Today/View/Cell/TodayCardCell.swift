@@ -9,7 +9,7 @@
 import UIKit
 
 //动画总时间
-private let animationTotalTime = 0.3
+private let animationTotalTime = 0.1
 //手指最大移动距离
 private let maxMoveDistance:CGFloat = 20.0
 
@@ -142,7 +142,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
         print("缩小")
         self.shrinkFinished = false
         UIView.animate(withDuration: animationTotalTime, delay: 0, options: .allowUserInteraction, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }, completion: { (finished) in
             self.shrinkFinished = true
             if let delegeteOK = self.delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), self.isFingerOn == false {
@@ -156,7 +156,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
     func restore() {
         if self.transform == CGAffineTransform.identity { return }
         print("还原")
-        UIView.animate(withDuration: max(animationTimeInterval,0.2), delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
+        UIView.animate(withDuration: max(animationTimeInterval,0.1), delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
             self.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }

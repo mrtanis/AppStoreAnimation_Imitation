@@ -22,6 +22,7 @@ class TodayCardDetailVC: BaseVC {
     
     var title1: UILabel!
     var title2: UILabel!
+    var closeBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +33,7 @@ class TodayCardDetailVC: BaseVC {
         title1 = UILabel().then {
             $0.font = UIFont.systemFont(ofSize: 15)
             $0.textColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1)
-            $0.text = "生活解决方案"
+            $0.text = "出游专题"
         }
         title1.sizeToFit()
         headerImage.addSubview(title1)
@@ -46,7 +47,7 @@ class TodayCardDetailVC: BaseVC {
         title2 = UILabel().then {
             $0.font = UIFont.systemFont(ofSize: 27, weight: .heavy)
             $0.textColor = .white
-            $0.text = "帮你找份理想工作"
+            $0.text = "与家人一起旅行"
         }
         title2.sizeToFit()
         headerImage.addSubview(title2)
@@ -61,14 +62,24 @@ class TodayCardDetailVC: BaseVC {
         title1.isHidden = true
         title2.isHidden = true
         
+        //创建关闭按钮
+        closeBtn = UIButton.init(type: .custom)
+        closeBtn.setImage(UIImage.init(named: "close"), for: .normal)
+        closeBtn.addTarget(self, action: #selector(clickClose), for: .touchUpInside)
+        closeBtn.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.5)
+        closeBtn.layer.cornerRadius = 12.5
+        closeBtn.layer.masksToBounds = true
+        self.view.addSubview(closeBtn)
+        closeBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(15)
+            make.right.equalTo(-15)
+            make.width.height.equalTo(25)
+        }
+        //隐藏按钮
+        closeBtn.isHidden = true
+        
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: ScreenWidth*1.2, left: 0, bottom: 0, right: 0)
         scrollView.delegate = self
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapImage))
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        headerImage.addGestureRecognizer(tap)
-        headerImage.isUserInteractionEnabled = true
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,11 +111,10 @@ class TodayCardDetailVC: BaseVC {
     }
     */
     
-    @objc func tapImage() {
-        self.dismiss(animated: true) {
-            UIView.animate(withDuration: 0.5) {
-                self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
-            }
+    @objc func clickClose() {
+        self.dismiss(animated: true, completion: nil)
+        if let vc = lastVC {
+            vc.delayShowTabBar()
         }
     }
 

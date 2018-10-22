@@ -97,14 +97,14 @@
                                                         <constraint firstAttribute="width" constant="293" id="xtd-0V-Pce"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生活解决方案" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-VS-VjA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出游专题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-VS-VjA">
                                                     <rect key="frame" x="15" y="12" width="263" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帮你找份理想工作" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-qU-Lrm">
-                                                    <rect key="frame" x="12" y="36" width="269" height="33"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="与家人一起旅行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-qU-Lrm">
+                                                    <rect key="frame" x="12" y="36" width="269" height="32.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -169,7 +169,7 @@
                             <constraint firstItem="no9-3a-n3m" firstAttribute="trailing" secondItem="4nb-Ec-b6k" secondAttribute="trailing" id="321-c0-6qW"/>
                             <constraint firstItem="no9-3a-n3m" firstAttribute="leading" secondItem="4nb-Ec-b6k" secondAttribute="leading" id="fhT-fJ-rvQ"/>
                             <constraint firstItem="no9-3a-n3m" firstAttribute="bottom" secondItem="4nb-Ec-b6k" secondAttribute="bottom" constant="49" id="wEo-zQ-dpP"/>
-                            <constraint firstItem="no9-3a-n3m" firstAttribute="top" secondItem="4nb-Ec-b6k" secondAttribute="top" id="ySX-zp-tgV"/>
+                            <constraint firstItem="no9-3a-n3m" firstAttribute="top" secondItem="pVw-9d-0zr" secondAttribute="top" constant="20" id="ySX-zp-tgV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4nb-Ec-b6k"/>
                     </view>
@@ -215,23 +215,34 @@
                                             <constraint firstItem="vn3-oP-o9T" firstAttribute="leading" secondItem="XtM-aj-rcl" secondAttribute="leading" id="zVZ-jx-VUX"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdd-eX-xXv">
-                                        <rect key="frame" x="0.0" y="477" width="375" height="700"/>
-                                        <color key="backgroundColor" red="0.13725490200000001" green="0.5450980392" blue="0.99607843139999996" alpha="1" colorSpace="deviceRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="700" id="7Uu-yd-CTE"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdd-eX-xXv">
+                                        <rect key="frame" x="15" y="477" width="345" height="872.5"/>
+                                        <mutableString key="text">大多数人每天都生活在规律的作息时间之中，多少会感觉有一点烦闷，所以一找到好时机，我们就会开启我们的旅程，给生活一种仪式感。
+
+2015年，英国进行了一个研究，调查人们最幸福的记忆是什么？约有一半的人表示，最幸福的记忆是与家人一起的时光。而有四分之一的人表示，他们靠着一些回忆度过生命中的困难。
+
+小的时候跟家人们一起去旅行，爸爸把你举高过头顶，让你骑厚实的肩膀上，一起到大自然去郊游，去跟小动物们打招呼。而妈妈在一旁细心为你们准备各种物品，还拿着相机来追逐你们，拍下每个温馨的瞬间。
+
+热恋的时候跟他/她一起去旅行。去旅行之前，大家互相商量着去什么地方游玩，甚至把明年的旅程也计划好了，因为我们知道对方是对的人。在路上，他时时刻刻呵护着你，把你当成手掌心上的小公主。
+
+当你们的宝贝慢慢长大，对事情有了一点认知。你便牵起她的小手，带她去远方湛蓝的海边，去听听贝壳里的声音，与海里的热带鱼一起遨游。每一次的旅行，都能让她不断地去发现，去探索，给她的童年留下甜蜜的一刻。
+
+在工作空闲的时间，与"年老"的爸爸妈妈一起出去走走。就像当年他们陪伴你一样，在路上细心地照顾他们，带他们走遍地球的春夏秋冬。
+
+每一个人生阶段的旅程，都是时光长河中用爱与陪伴熬制而成的浓情蜜意，它们伴着我们一生漫漫人生路，温暖了岁月，也感动了时光。
+
+我们或许会经历人生的低谷，但是想起这些与家人一起的美好时光，浓情蜜意便会包围着你，使你走出困境。</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.14117647059999999" green="0.7843137255" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="XtM-aj-rcl" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="LP0-EP-OTg"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jdd-eX-xXv" secondAttribute="trailing" id="QdM-wc-9Fy"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jdd-eX-xXv" secondAttribute="trailing" constant="15" id="QdM-wc-9Fy"/>
                                     <constraint firstItem="XtM-aj-rcl" firstAttribute="top" secondItem="5fJ-Sf-yUV" secondAttribute="top" id="YQS-RS-05p"/>
-                                    <constraint firstItem="Jdd-eX-xXv" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" id="ae5-l7-fMB"/>
+                                    <constraint firstItem="Jdd-eX-xXv" firstAttribute="leading" secondItem="5fJ-Sf-yUV" secondAttribute="leading" constant="15" id="ae5-l7-fMB"/>
                                     <constraint firstAttribute="trailing" secondItem="XtM-aj-rcl" secondAttribute="trailing" id="b6G-gd-2HP"/>
                                     <constraint firstAttribute="bottom" secondItem="Jdd-eX-xXv" secondAttribute="bottom" constant="52" id="fOH-HL-a77"/>
                                     <constraint firstItem="Jdd-eX-xXv" firstAttribute="top" secondItem="XtM-aj-rcl" secondAttribute="bottom" constant="27" id="nuO-Zy-KM3"/>
@@ -242,7 +253,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5fJ-Sf-yUV" firstAttribute="top" secondItem="lHk-5s-iil" secondAttribute="top" id="51s-kC-G7b"/>
-                            <constraint firstItem="Jdd-eX-xXv" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" id="CoQ-jS-LlA"/>
+                            <constraint firstItem="Jdd-eX-xXv" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" constant="-30" id="CoQ-jS-LlA"/>
                             <constraint firstAttribute="bottom" secondItem="5fJ-Sf-yUV" secondAttribute="bottom" id="WEl-dY-6JG"/>
                             <constraint firstItem="5fJ-Sf-yUV" firstAttribute="leading" secondItem="lHk-5s-iil" secondAttribute="leading" id="hcr-fz-zmX"/>
                             <constraint firstItem="XtM-aj-rcl" firstAttribute="width" secondItem="vgv-Pr-Ws6" secondAttribute="width" id="i4t-Nk-Dat"/>
@@ -389,7 +400,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iOSDevelopLogo" width="1024" height="1024"/>
+        <image name="iOSDevelopLogo" width="1920" height="1440"/>
         <image name="icon_boy" width="100" height="100"/>
         <image name="tabIcon_app" width="24" height="24"/>
         <image name="tabIcon_game" width="24" height="24"/>
