@@ -60,74 +60,83 @@ class TodayCardCell: UICollectionViewCell, Reusable {
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        return view
-    }
-    
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        let view = super.hitTest(point, with: event)
+//        return view
+//    }
+//    
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let isInside = super.point(inside: point, with: event)
         if isInside {
-            
-            if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
-                delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
-            }
-            
-            if let closure = touchClosure {
-                closure(self)
-            }
-            
-            isFingerOn = true
-            beginPoint = point
-            beginTime = CFAbsoluteTimeGetCurrent()
-            shrink()
+        print("pointInside")
+//            if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
+//                delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
+//            }
+//
+//            if let closure = touchClosure {
+//                closure(self)
+//            }
+//
+//            isFingerOn = true
+//            beginPoint = point
+//            beginTime = CFAbsoluteTimeGetCurrent()
+//            shrink()
         }
         return isInside;
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        print("touchBegan")
+////        let touch = touches.first
+////        let point = touch?.location(in: self)
+////        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
+////            delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
+////        }
+////
+////        if let closure = touchClosure {
+////            closure(self)
+////        }
+////
+////        isFingerOn = true
+////        beginPoint = point
+////        beginTime = CFAbsoluteTimeGetCurrent()
+////        shrink()
+//    }
+//
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        print("TouchesMoved")
 //        let touch = touches.first
-//        let point = touch?.location(in: self)
-//        beginPoint = point
-//        beginTime = CFAbsoluteTimeGetCurrent()
-//        shrink()
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        
-        guard let point = touch?.location(in: self), let begin = beginPoint else {
-            return
-        }
-        let distance = abs(point.y - begin.y)
-        if distance > maxMoveDistance && restoreExcuted == false {
-            restoreExcuted = true
-            calculateTimeInterval()
-            restore()
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("TouchEnded")
-        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), shrinkFinished == true {
-            
-            delegeteOK.jumpToCardDetail(fromCell: self)
-        }
+//
+//        guard let point = touch?.location(in: self), let begin = beginPoint else {
+//            return
+//        }
+//        let distance = abs(point.y - begin.y)
+//        if distance > maxMoveDistance && restoreExcuted == false {
+//            restoreExcuted = true
+//            calculateTimeInterval()
+//            restore()
+//        }
+//    }
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        print("TouchEnded")
+//        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), shrinkFinished == true {
+//
+//            delegeteOK.jumpToCardDetail(fromCell: self)
+//        }
 //        calculateTimeInterval()
 //        restore()
-        isFingerOn = false
-        restoreExcuted = false
-    }
-    
-    
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("TouchEnded")
-        calculateTimeInterval()
-        restore()
-        isFingerOn = false
-        restoreExcuted = false
-    }
+//        isFingerOn = false
+//        restoreExcuted = false
+//    }
+//
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        print("TouchEnded")
+//        calculateTimeInterval()
+//        restore()
+//        isFingerOn = false
+//        restoreExcuted = false
+//    }
     
     //计算时间
     func calculateTimeInterval() {

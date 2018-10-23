@@ -147,6 +147,33 @@ extension TodayVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return UIEdgeInsets.zero
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        print("shouldHighlight")
+        return true
+    }
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        print("didHighlight")
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        print("didUnhighlight")
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        print("canFocus")
+        return true
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelect")
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("didDeselect")
+        
+    }
+    
 }
 
 extension TodayVC: UICollectionViewDelegateFlowLayout {
@@ -157,6 +184,7 @@ extension TodayVC: UICollectionViewDelegateFlowLayout {
 
 extension TodayVC: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("scrollViewWillBeginDragging")
         beginOffsetY = scrollView.contentOffset.y
         if let cell = currentTouchCell {
             cell.isFingerOn = true
