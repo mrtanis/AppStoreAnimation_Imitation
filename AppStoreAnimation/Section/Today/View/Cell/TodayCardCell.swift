@@ -69,7 +69,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
         let isInside = super.point(inside: point, with: event)
         if isInside {
             
-            if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
+            /*if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
                 delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
             }
             
@@ -80,11 +80,11 @@ class TodayCardCell: UICollectionViewCell, Reusable {
             isFingerOn = true
             beginPoint = point
             beginTime = CFAbsoluteTimeGetCurrent()
-            shrink()
+            shrink()*/
         }
         return isInside;
     }
-    
+    /*
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        let touch = touches.first
 //        let point = touch?.location(in: self)
@@ -128,7 +128,7 @@ class TodayCardCell: UICollectionViewCell, Reusable {
         isFingerOn = false
         restoreExcuted = false
     }
-    
+    */
     //计算时间
     func calculateTimeInterval() {
         let nowTime = CFAbsoluteTimeGetCurrent()

@@ -187,6 +187,19 @@ extension TodayVC: UIScrollViewDelegate {
         cell.restore()
         cell.restoreExcuted = false
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TodayVC-touchesBegan")
+    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TodayVC-touchesMoved")
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TodayVC-touchesEnded")
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TodayVC-touchesCancelled")
+    }
 }
 
 extension TodayVC: UIViewControllerTransitioningDelegate {
