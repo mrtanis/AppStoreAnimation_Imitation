@@ -72,7 +72,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="no9-3a-n3m">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="no9-3a-n3m" customClass="TodayVCCollectionView" customModule="AppStoreAnimation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DdH-e0-UoW">
@@ -217,7 +217,7 @@
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdd-eX-xXv">
                                         <rect key="frame" x="15" y="477" width="345" height="872.5"/>
-                                        <mutableString key="text">大多数人每天都生活在规律的作息时间之中，多少会感觉有一点烦闷，所以一找到好时机，我们就会开启我们的旅程，给生活一种仪式感。
+                                        <string key="text">大多数人每天都生活在规律的作息时间之中，多少会感觉有一点烦闷，所以一找到好时机，我们就会开启我们的旅程，给生活一种仪式感。
 
 2015年，英国进行了一个研究，调查人们最幸福的记忆是什么？约有一半的人表示，最幸福的记忆是与家人一起的时光。而有四分之一的人表示，他们靠着一些回忆度过生命中的困难。
 
@@ -231,7 +231,7 @@
 
 每一个人生阶段的旅程，都是时光长河中用爱与陪伴熬制而成的浓情蜜意，它们伴着我们一生漫漫人生路，温暖了岁月，也感动了时光。
 
-我们或许会经历人生的低谷，但是想起这些与家人一起的美好时光，浓情蜜意便会包围着你，使你走出困境。</mutableString>
+我们或许会经历人生的低谷，但是想起这些与家人一起的美好时光，浓情蜜意便会包围着你，使你走出困境。</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

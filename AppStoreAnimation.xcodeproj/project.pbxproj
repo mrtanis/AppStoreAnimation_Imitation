@@ -10,6 +10,7 @@
 		1330941D3DC7BBC2147018B0 /* Pods_AppStoreAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED693BA294757E92103D7E1 /* Pods_AppStoreAnimation.framework */; };
 		26187FEC2177262B008F9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26187FEB2177262A008F9C35 /* Main.storyboard */; };
 		26187FF42179E13D008F9C35 /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26187FF32179E13C008F9C35 /* SwipeInteractionController.swift */; };
+		2653116B218203F100ECB940 /* TodayVCCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2653116A218203F100ECB940 /* TodayVCCollectionView.swift */; };
 		2658225F2177627C004A7B44 /* ShrinkDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2658225E2177627C004A7B44 /* ShrinkDismissAnimationController.swift */; };
 		265D81E4215B642E00A792F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D81E3215B642E00A792F2 /* AppDelegate.swift */; };
 		265D81EB215B643000A792F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265D81EA215B643000A792F2 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		26187FEB2177262A008F9C35 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		26187FF32179E13C008F9C35 /* SwipeInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
+		2653116A218203F100ECB940 /* TodayVCCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVCCollectionView.swift; sourceTree = "<group>"; };
 		2658225E2177627C004A7B44 /* ShrinkDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkDismissAnimationController.swift; sourceTree = "<group>"; };
 		265D81E0215B642E00A792F2 /* AppStoreAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		265D81E3215B642E00A792F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				265D820B215B8A2800A792F2 /* View */,
 				265D8201215B705E00A792F2 /* TodayVC.swift */,
+				2653116A218203F100ECB940 /* TodayVCCollectionView.swift */,
 				26B52EC6215F5676009B18E1 /* TodayCardDetailVC.swift */,
 				26B52EC8215F56B6009B18E1 /* ExtendPresentAnimationController.swift */,
 				2658225E2177627C004A7B44 /* ShrinkDismissAnimationController.swift */,
@@ -343,6 +346,7 @@
 				26187FF42179E13D008F9C35 /* SwipeInteractionController.swift in Sources */,
 				265D820A215B70A900A792F2 /* SearchVC.swift in Sources */,
 				265D8208215B709600A792F2 /* UpdateVC.swift in Sources */,
+				2653116B218203F100ECB940 /* TodayVCCollectionView.swift in Sources */,
 				265D8200215B6CDD00A792F2 /* NavVC.swift in Sources */,
 				265D81FC215B6B6500A792F2 /* TabVC.swift in Sources */,
 				26B52ECC21606ECF009B18E1 /* BaseVC.swift in Sources */,

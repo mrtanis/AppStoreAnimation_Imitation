@@ -17,7 +17,7 @@ class TodayVC: BaseVC {
     
     var currentTouchCellOriginFrame: CGRect?
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: TodayVCCollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
