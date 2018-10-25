@@ -126,10 +126,11 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
                 snapContainer.frame = finalFrame
             })
         }) { _ in
-            todayVC.currentTouchCell?.transform = CGAffineTransform.identity
+//            todayVC.currentTouchCell?.transform = CGAffineTransform.identity
             toVC.view.isHidden = false
             toVC.title1.isHidden = false
             toVC.title2.isHidden = false
+            toVC.closeBtn.isHidden = false
             blurView.removeFromSuperview()
             snapContainer.removeFromSuperview()
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)

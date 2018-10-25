@@ -60,11 +60,11 @@ class TodayCardCell: UICollectionViewCell, Reusable {
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        return view
-    }
-    
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        let view = super.hitTest(point, with: event)
+//        return view
+//    }
+//    
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let isInside = super.point(inside: point, with: event)
         if isInside {

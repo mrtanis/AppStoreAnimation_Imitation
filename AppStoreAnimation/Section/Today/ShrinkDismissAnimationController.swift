@@ -110,6 +110,8 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
             let success = !transitionContext.transitionWasCancelled
             if !success {
                 tVC.view.removeFromSuperview()
+            } else {
+                todayVC.currentTouchCell?.transform = CGAffineTransform.identity
             }
             transitionContext.completeTransition(success)
         }
