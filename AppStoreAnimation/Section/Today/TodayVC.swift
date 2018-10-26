@@ -185,10 +185,13 @@ extension TodayVC: UICollectionViewDelegateFlowLayout {
 extension TodayVC: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("scrollViewWillBeginDragging")
-        beginOffsetY = scrollView.contentOffset.y
-        if let cell = currentTouchCell {
-            cell.isFingerOn = true
-        }
+//        beginOffsetY = scrollView.contentOffset.y
+//        if let cell = currentTouchCell {
+//            cell.isFingerOn = true
+//            cell.calculateTimeInterval()
+//            cell.restore()
+//            cell.restoreExcuted = false
+//        }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        print("scrollViewDidScroll")
@@ -211,9 +214,7 @@ extension TodayVC: UIScrollViewDelegate {
             return
         }
         cell.isFingerOn = false
-        cell.calculateTimeInterval()
-        cell.restore()
-        cell.restoreExcuted = false
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

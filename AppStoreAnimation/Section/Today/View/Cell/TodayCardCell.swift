@@ -101,18 +101,18 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
         let isInside = super.point(inside: point, with: event)
         if isInside {
             print("pointInside")
-            /*if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
-                delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
-            }
-            
-            if let closure = touchClosure {
-                closure(self)
-            }
-            
-            isFingerOn = true
-            beginPoint = point
-            beginTime = CFAbsoluteTimeGetCurrent()
-            shrink()*/
+//            if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
+//                delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
+//            }
+//            
+//            if let closure = touchClosure {
+//                closure(self)
+//            }
+//            
+//            isFingerOn = true
+//            beginPoint = point
+//            beginTime = CFAbsoluteTimeGetCurrent()
+//            shrink()
         }
         return isInside;
     }
