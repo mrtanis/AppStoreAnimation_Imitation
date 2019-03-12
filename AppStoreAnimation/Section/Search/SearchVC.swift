@@ -8,12 +8,16 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+class SearchVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "搜索"
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setTabBarVisible(visible: true, animated: false, timeInterval: 0)
     }
     
 

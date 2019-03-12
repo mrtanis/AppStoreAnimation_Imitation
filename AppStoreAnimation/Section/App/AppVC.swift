@@ -8,14 +8,17 @@
 
 import UIKit
 
-class AppVC: UIViewController {
+class AppVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "App"
-        // Do any additional setup after loading the view.
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setTabBarVisible(visible: true, animated: false, timeInterval: 0)
+    }
 
     /*
     // MARK: - Navigation

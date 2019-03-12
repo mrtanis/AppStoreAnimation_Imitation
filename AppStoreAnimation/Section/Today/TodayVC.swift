@@ -45,17 +45,20 @@ class TodayVC: BaseVC {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         currentTouchCell?.isHidden = false
+        self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .none)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        
-
-        UIView.animate(withDuration: 0, animations: {
-            self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .slide)
-        }) { (finished) in
-            self.setTabBarVisible(visible: false, animated: true, timeInterval: 0.5)
+        if self.tabBarController?.selectedIndex == 0 {
+            UIView.animate(withDuration: 0, animations: {
+                self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .slide)
+            }) { (finished) in
+                if self.tabBarController?.selectedIndex == 0 {
+                    self.setTabBarVisible(visible: false, animated: true, timeInterval: 0.5)
+                }
+            }
         }
     }
     
@@ -77,7 +80,7 @@ class TodayVC: BaseVC {
     }
 
     func delayShowTabBar() {
-        perform(#selector(showTabBar), with: nil, afterDelay: 0.5)
+        perform(#selector(showTabBar), with: nil, afterDelay: 0.01)
     }
     
     
@@ -98,8 +101,8 @@ extension TodayVC: TodayCardCellDelegate {
     }
     //更新点击cell初始frame
     func updateBeginTouchFrame(cellFrame rect: CGRect, ofCell cell: TodayCardCell) {
-        if self.currentTouchCellOriginFrame == nil {
-            self.currentTouchCellOriginFrame = collectionView.convert(rect, to: self.view)
+        if rect.size.width == ScreenWidth - 40 {
+            self.currentTouchCellOriginFrame = (cell.convert(cell.bounds, to: self.view))
         }
         
     }
@@ -186,12 +189,12 @@ extension TodayVC: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("scrollViewWillBeginDragging")
 //        beginOffsetY = scrollView.contentOffset.y
-//        if let cell = currentTouchCell {
-//            cell.isFingerOn = true
-//            cell.calculateTimeInterval()
-//            cell.restore()
-//            cell.restoreExcuted = false
-//        }
+        if let cell = currentTouchCell {
+            cell.isFingerOn = true
+            cell.calculateTimeInterval()
+            cell.restore()
+            cell.restoreExcuted = false
+        }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        print("scrollViewDidScroll")

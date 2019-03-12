@@ -133,6 +133,10 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
             toVC.closeBtn.isHidden = false
             blurView.removeFromSuperview()
             snapContainer.removeFromSuperview()
+            let success = !transitionContext.transitionWasCancelled
+            if success {
+                todayVC.currentTouchCellOriginFrame = nil
+            }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }

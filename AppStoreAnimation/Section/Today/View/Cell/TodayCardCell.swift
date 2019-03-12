@@ -9,7 +9,7 @@
 import UIKit
 
 //动画总时间
-private let animationTotalTime = 0.1
+private let animationTotalTime = 0.2
 //手指最大移动距离
 private let maxMoveDistance:CGFloat = 20.0
 
@@ -17,6 +17,31 @@ private let maxMoveDistance:CGFloat = 20.0
  @objc protocol TodayCardCellDelegate: NSObjectProtocol {
     @objc func jumpToCardDetail(fromCell cell:TodayCardCell)
     @objc func updateBeginTouchFrame(cellFrame rect:CGRect, ofCell cell:TodayCardCell)
+}
+
+enum shrinkState {
+    case shrinking
+    case shrinked
+}
+
+enum restoreState {
+    case restoring
+    case restored
+}
+
+enum animationState {
+    case normal
+    case shrinking
+    case shrinked
+    case restoring
+    case restored
+}
+
+enum touchState: Int {
+    case none
+    case touchBegan
+    case touchMoved
+    case touchEnded
 }
 
 class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate{
@@ -29,6 +54,10 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     var beginTime: Double?
     //缩放动画开始到被中断的时间间隔
     var animationTimeInterval = 0.5
+    //动画状态
+    var nowState = animationState.normal
+    //触摸状态
+    var nowTouchState = touchState.none
     //恢复动画是否执行
     var restoreExcuted = false {
         didSet {
@@ -101,24 +130,25 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
         let isInside = super.point(inside: point, with: event)
         if isInside {
             print("pointInside")
-//            if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
-//                delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
-//            }
-//            
-//            if let closure = touchClosure {
-//                closure(self)
-//            }
-//            
-//            isFingerOn = true
-//            beginPoint = point
-//            beginTime = CFAbsoluteTimeGetCurrent()
-//            shrink()
+            if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.updateBeginTouchFrame(cellFrame:ofCell:))) {
+                delegeteOK.updateBeginTouchFrame(cellFrame: self.frame, ofCell: self)
+            }
+            
+            if let closure = touchClosure {
+                closure(self)
+            }
+            
+            isFingerOn = true
+            beginPoint = point
+            beginTime = CFAbsoluteTimeGetCurrent()
+            shrink()
         }
         return isInside;
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchesBegan")
+        nowTouchState = .touchBegan
 //        let touch = touches.first
 //        let point = touch?.location(in: self)
 //        beginPoint = point
@@ -128,6 +158,7 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchesMoved")
+        nowTouchState = .touchMoved
 //        let touch = touches.first
 //
 //        guard let point = touch?.location(in: self), let begin = beginPoint else {
@@ -143,14 +174,15 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchEnded")
-//        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), shrinkFinished == true {
-//
-//            delegeteOK.jumpToCardDetail(fromCell: self)
-//        }
-////        calculateTimeInterval()
-////        restore()
-//        isFingerOn = false
-//        restoreExcuted = false
+        nowTouchState = .touchEnded
+        if let delegeteOK = delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), nowState == animationState.shrinked {
+
+            delegeteOK.jumpToCardDetail(fromCell: self)
+        }
+//        calculateTimeInterval()
+//        restore()
+        isFingerOn = false
+        restoreExcuted = false
     }
     
     
@@ -173,14 +205,16 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     //缩小动画
     func shrink() {
         if self.transform != CGAffineTransform.identity { return }
+        nowState = .shrinking
         print("缩小")
         self.shrinkFinished = false
-        UIView.animate(withDuration: animationTotalTime, delay: 0, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: animationTotalTime, delay: 0, options: [.allowUserInteraction, .curveEaseInOut], animations: {
             self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }, completion: { (finished) in
+            self.nowState = .shrinked
             self.shrinkFinished = true
-            if let delegeteOK = self.delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), self.isFingerOn == false {
-                
+            if let delegeteOK = self.delegate, delegeteOK.responds(to: #selector(TodayCardCellDelegate.jumpToCardDetail(fromCell:))), self.nowTouchState == .touchEnded {
+
                 delegeteOK.jumpToCardDetail(fromCell: self)
             }
         })
@@ -189,10 +223,13 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     //还原动画
     func restore() {
         if self.transform == CGAffineTransform.identity { return }
+        nowState = .restoring
         print("还原")
-        UIView.animate(withDuration: max(animationTimeInterval,0.1), delay: 0, options: [.beginFromCurrentState, .allowUserInteraction], animations: {
+        UIView.animate(withDuration: max(animationTimeInterval,0.2), delay: 0, options: [.beginFromCurrentState, .allowUserInteraction, .curveEaseInOut], animations: {
             self.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
+        }, completion: { (finished) in
+            self.nowState = .restored
+        })
     }
 }
 

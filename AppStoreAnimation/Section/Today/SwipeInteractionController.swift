@@ -51,15 +51,17 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
             
         // 3
         case .changed:
-            shouldCompleteTransition = progress > 0.5
+            shouldCompleteTransition = progress > 0.41
             if shouldCompleteTransition {
                 if delegateCalled == false, let delegeteOK = delegate, delegeteOK.responds(to: #selector(SwipeInteractionDelegate.SwipeInteractionAskToShowTabBar)) {
                     delegateCalled = true
                     delegeteOK.SwipeInteractionAskToShowTabBar()
                 }
                 finish()
+            } else {
+                update(progress)
             }
-            update(progress)
+            
             
         // 4
         case .cancelled:

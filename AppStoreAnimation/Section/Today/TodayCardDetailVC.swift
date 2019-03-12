@@ -23,6 +23,8 @@ class TodayCardDetailVC: BaseVC {
     var title1: UILabel!
     var title2: UILabel!
     var closeBtn: UIButton!
+    //流畅退场动画（点击关闭按钮时使用）
+    var fluentAnimaition = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -112,6 +114,7 @@ class TodayCardDetailVC: BaseVC {
     */
     
     @objc func clickClose() {
+        fluentAnimaition = true
         self.dismiss(animated: true, completion: nil)
         if let vc = lastVC {
             vc.delayShowTabBar()
@@ -134,7 +137,7 @@ extension TodayCardDetailVC: UIScrollViewDelegate {
 extension TodayCardDetailVC: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let finalFrame = self.dismissToRect {
-            return ShrinkDismissAnimationController(finalFrame: finalFrame, interactionController: swipeInteractionController)
+            return ShrinkDismissAnimationController(finalFrame: finalFrame, interactionController: swipeInteractionController, fluentAnimation: self.fluentAnimaition)
         } else {
             return nil
         }
