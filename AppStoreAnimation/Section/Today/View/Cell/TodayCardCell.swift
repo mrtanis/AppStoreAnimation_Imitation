@@ -69,6 +69,8 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     //手指是否在cell上
     var isFingerOn = false
     
+    @IBOutlet weak var title1: UILabel!
+    @IBOutlet weak var title2: UILabel!
     //图片视图宽度
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     
@@ -85,13 +87,8 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowRadius = 15
         self.layer.shadowOpacity = 0.4
-//        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 15).cgPath
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        //添加手势
-//        let pan = UIPanGestureRecognizer.init(target: self, action: #selector(handlePanGesture(_:)))
-//        pan.delegate = self
-//        self.addGestureRecognizer(pan)
-        
+
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -103,29 +100,7 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
         }
     }
     
-    @objc func handlePanGesture(_ gesture:UIPanGestureRecognizer) {
-        switch gesture.state {
-        case .possible:
-            print("Pan-possible")
-        case .began:
-            print("Pan-began")
-        case .changed:
-            print("Pan-changed")
-        case .ended:
-            print("Pan-ended")
-        case .failed:
-            print("Pan-failed")
-        case .cancelled:
-            print("Pan-cancelled")
-        }
-        
-    }
     
-//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-//        let view = super.hitTest(point, with: event)
-//        return view
-//    }
-//    
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let isInside = super.point(inside: point, with: event)
         if isInside {
@@ -149,27 +124,11 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchesBegan")
         nowTouchState = .touchBegan
-//        let touch = touches.first
-//        let point = touch?.location(in: self)
-//        beginPoint = point
-//        beginTime = CFAbsoluteTimeGetCurrent()
-//        shrink()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchesMoved")
         nowTouchState = .touchMoved
-//        let touch = touches.first
-//
-//        guard let point = touch?.location(in: self), let begin = beginPoint else {
-//            return
-//        }
-//        let distance = abs(point.y - begin.y)
-//        if distance > maxMoveDistance && restoreExcuted == false {
-//            restoreExcuted = true
-//            calculateTimeInterval()
-//            restore()
-//        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -179,8 +138,7 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
 
             delegeteOK.jumpToCardDetail(fromCell: self)
         }
-//        calculateTimeInterval()
-//        restore()
+
         isFingerOn = false
         restoreExcuted = false
     }
@@ -189,10 +147,7 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchEnded")
-//        calculateTimeInterval()
-//        restore()
-//        isFingerOn = false
-//        restoreExcuted = false
+
     }
     
     //计算时间

@@ -8,13 +8,12 @@
 
 import UIKit
 
-//手指最大移动距离
-private let maxMoveDistance:CGFloat = 20.0
 class TodayVC: BaseVC {
 
     var beginOffsetY: CGFloat?
+//    当前触摸的cell
     var currentTouchCell: TodayCardCell?
-    
+//    当前触摸cell的初始frame
     var currentTouchCellOriginFrame: CGRect?
     
     @IBOutlet weak var collectionView: TodayVCCollectionView!
@@ -29,7 +28,7 @@ class TodayVC: BaseVC {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.registerReusableSupplementaryView(elementKind: UICollectionView.elementKindSectionHeader, TodayCardHeaderView.self)
+
         layout.itemSize = CGSize(width: ScreenWidth-40, height: (ScreenWidth-40)*1.2)
         layout.minimumLineSpacing = 30
         layout.minimumInteritemSpacing = 20
@@ -56,7 +55,7 @@ class TodayVC: BaseVC {
                 self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .slide)
             }) { (finished) in
                 if self.tabBarController?.selectedIndex == 0 {
-                    self.setTabBarVisible(visible: false, animated: true, timeInterval: 0.5)
+//                    self.setTabBarVisible(visible: false, animated: true, timeInterval: 0)
                 }
             }
         }
@@ -80,7 +79,7 @@ class TodayVC: BaseVC {
     }
 
     func delayShowTabBar() {
-        perform(#selector(showTabBar), with: nil, afterDelay: 0.01)
+//        perform(#selector(showTabBar), with: nil, afterDelay: 0.01)
     }
     
     
@@ -88,7 +87,7 @@ class TodayVC: BaseVC {
         UIView.animate(withDuration: 0.5) {
             self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
         }
-        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0.5)
+//        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0)
     }
     
 
@@ -150,33 +149,6 @@ extension TodayVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return UIEdgeInsets.zero
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        print("shouldHighlight")
-        return true
-    }
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        print("didHighlight")
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        print("didUnhighlight")
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
-        print("canFocus")
-        return true
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelect")
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("didDeselect")
-        
-    }
-    
 }
 
 extension TodayVC: UICollectionViewDelegateFlowLayout {
@@ -188,7 +160,6 @@ extension TodayVC: UICollectionViewDelegateFlowLayout {
 extension TodayVC: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("scrollViewWillBeginDragging")
-//        beginOffsetY = scrollView.contentOffset.y
         if let cell = currentTouchCell {
             cell.isFingerOn = true
             cell.calculateTimeInterval()
@@ -196,21 +167,7 @@ extension TodayVC: UIScrollViewDelegate {
             cell.restoreExcuted = false
         }
     }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print("scrollViewDidScroll")
-        guard let beginOffsetY = self.beginOffsetY else {
-            return
-        }
-        let offsetY = scrollView.contentOffset.y
-        let offsetYDiff = abs(offsetY - beginOffsetY)
-        if offsetYDiff > maxMoveDistance {
-            if let cell = currentTouchCell, cell.restoreExcuted == false, cell.isFingerOn {
-                cell.restoreExcuted = true
-                cell.calculateTimeInterval()
-                cell.restore()
-            }
-        }
-    }
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         print("scrollViewWillEndDragging")
         guard let cell = currentTouchCell else {
@@ -220,18 +177,6 @@ extension TodayVC: UIScrollViewDelegate {
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("TodayVC-touchesBegan")
-    }
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("TodayVC-touchesMoved")
-    }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("TodayVC-touchesEnded")
-    }
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("TodayVC-touchesCancelled")
-    }
 }
 
 extension TodayVC: UIViewControllerTransitioningDelegate {

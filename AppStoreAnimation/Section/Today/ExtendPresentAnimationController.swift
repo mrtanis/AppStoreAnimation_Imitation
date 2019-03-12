@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
-    
+    //cell缩放0.95倍后的frame（相对于整个View的frame）
     private let originFrame: CGRect
     
     init(originFrame: CGRect) {
@@ -24,8 +24,7 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
-            let tVC = transitionContext.viewController(forKey: .to),
-            let snapshot = tVC.view.snapshotView(afterScreenUpdates: true)
+            let tVC = transitionContext.viewController(forKey: .to)
             else {
                 return
         }
@@ -35,75 +34,100 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         let todayVC = navVC.viewControllers.first as! TodayVC
         let toVC = tVC as! TodayCardDetailVC
         
+        //取标题和按钮以及tabbar的snapshot
+        guard
+            let snapshotTitle1 = toVC.title1.snapshotView(afterScreenUpdates: true),
+            let snapshotTitle2 = toVC.title2.snapshotView(afterScreenUpdates: true),
+            let snapshotClose = toVC.closeBtn.snapshotView(afterScreenUpdates: true),
+        let snapshotTabBar = tabVC.tabBar.snapshotView(afterScreenUpdates: false)
+        else {
+                return
+        }
+        
+        //隐藏真的TabBar
+        tabVC.tabBar.isHidden = true
+        
+        //先把toVC的标题和按钮隐藏后，再取整个视图的snapshot
+        toVC.title1.isHidden = true
+        toVC.title2.isHidden = true
+        toVC.closeBtn.isHidden = true
+        
+        guard let snapshotToVC = tVC.view.snapshotView(afterScreenUpdates: true) else {
+                return
+        }
+        
+        //正向跳转时，containerView默认包含FromVC的View，不包含ToVC的View（因为FromVC已经在栈里）
         let containerView = transitionContext.containerView
         let finalFrame = transitionContext.finalFrame(for: toVC)
-        //添加blurView
+        //添加blurView（模糊FromVC的View）
         let effect = UIBlurEffect.init(style: .light)
         let blurView = UIVisualEffectView.init(effect: effect)
         blurView.alpha = 0
         blurView.frame = containerView.bounds
         containerView.addSubview(blurView)
         
-        
+        //创建snapContainer，用作需要动画的视图的容器
+        //容器的作用是保证在放大动画过程中，视图的移动正确路径
         let snapContainer = UIView()
+        //初始大小当然是和cell的大小相同
         snapContainer.frame = originFrame
+        //圆角也要保持一致
         snapContainer.layer.cornerRadius = 15
+        //保证子视图不超出显示范围
         snapContainer.layer.masksToBounds = true
         
+        //添加ToVC的snapshot
+        snapContainer.addSubview(snapshotToVC)
+        let originWidth = originFrame.width
+        let originHeight = originFrame.height
+        let finalWidth = finalFrame.width
+        let finalHeight = finalFrame.height
+        let finalHeaderHeight = finalWidth * 1.2
         
-        
-        snapContainer.addSubview(snapshot)
-        let width = finalFrame.width
-        let height = finalFrame.height
-        let x = -(finalFrame.width-originFrame.width)*0.5
-        let y = -(finalFrame.height*0.5*0.05+finalFrame.width*0.5*1.2*0.95-originFrame.width*1.2*0.5)
-        snapshot.frame = CGRect(x: x, y: y, width: width, height: height)
-        snapshot.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        //此处计算需要画个图来解释
+        let x = -(finalWidth-originWidth)*0.5
+        let y = -(finalHeight*0.5*0.05+finalHeaderHeight*0.5*0.95-originHeight*0.5)
+        snapshotToVC.frame = CGRect(x: x, y: y, width: finalWidth, height: finalHeight)
+        //先缩放为0.95倍（因为此时的cell也是缩放0.95倍的）
+        snapshotToVC.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
         //添加两个标题
-        //先添加透明视图（大小同详情页顶部图片视图大小）
-        let clearBG = UIView()
-        clearBG.backgroundColor = .clear
+        //先添加透明视图（大小同cell未缩放的大小）
+        let clearBG = UIView().then {
+            $0.backgroundColor = .clear
+            let cleanBGW = ScreenWidth-40
+            let cleanBGH = cleanBGW * 1.2
+            let cleanBGX = -(cleanBGW-originFrame.width)*0.5
+            let cleanBGY = -(cleanBGH-originFrame.width*1.2)*0.5
+            $0.frame = CGRect(x: cleanBGX, y: cleanBGY, width: cleanBGW, height: cleanBGH)
+        }
+        
         snapContainer.addSubview(clearBG)
-        let cleanBGW = ScreenWidth-40
-        let cleanBGH = cleanBGW * 1.2
-        let cleanBGX = -(cleanBGW-originFrame.width)*0.5
-        let cleanBGY = -(cleanBGH-originFrame.width*1.2)*0.5
         
-        clearBG.frame = CGRect(x: cleanBGX, y: cleanBGY, width: cleanBGW, height: cleanBGH)
+        clearBG.addSubview(snapshotTitle1)
+        snapshotTitle1.frame = CGRect(x:  15, y:  12, width: snapshotTitle1.bounds.width, height: snapshotTitle1.bounds.height)
         
-        let title1 = UILabel().then {
-            $0.font = UIFont.systemFont(ofSize: 15)
-            $0.textColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1)
-            $0.text = "出游专题"
-        }
-        clearBG.addSubview(title1)
-        title1.sizeToFit()
-        title1.frame = CGRect(x:  15, y:  12, width: ScreenWidth-30, height: title1.bounds.height)
-        
-        let title2 = UILabel().then {
-            $0.font = UIFont.systemFont(ofSize: 27, weight: .heavy)
-            $0.textColor = .white
-            $0.text = "与家人一起旅行"
-        }
-        clearBG.addSubview(title2)
-        title2.sizeToFit()
-        title2.frame = CGRect(x:   12, y:  title1.frame.maxY+6, width: ScreenWidth-30, height: title2.bounds.height)
+        clearBG.addSubview(snapshotTitle2)
+        snapshotTitle2.frame = CGRect(x:   12, y:  snapshotTitle1.frame.maxY+6, width: snapshotTitle2.bounds.width, height: snapshotTitle2.bounds.height)
 
         //创建关闭按钮
-        let closeBtn = UIButton.init(type: .custom)
-        closeBtn.setImage(UIImage.init(named: "close"), for: .normal)
-        closeBtn.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.5)
-        closeBtn.layer.cornerRadius = 12.5
-        closeBtn.layer.masksToBounds = true
-        clearBG.addSubview(closeBtn)
-        closeBtn.frame = CGRect(x:  clearBG.bounds.width-15-25, y:  15, width: 25, height: 25)
+        clearBG.addSubview(snapshotClose)
+        snapshotClose.frame = CGRect(x:  clearBG.bounds.width-15-25, y:  15, width: 25, height: 25)
         
+        //缩放0.95倍
         clearBG.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
+        //添加ToVC的View到containerView，并隐藏
         containerView.addSubview(toVC.view)
-        containerView.addSubview(snapContainer)
         toVC.view.isHidden = true
+        
+        //添加snapContainer到containerView
+        containerView.addSubview(snapContainer)
+        
+        //添加snapshotTabBar到containerView
+        snapshotTabBar.frame = CGRect(x: 0, y: containerView.bounds.height - snapshotTabBar.bounds.height, width: snapshotTabBar.bounds.width, height: snapshotTabBar.bounds.height)
+        containerView.addSubview(snapshotTabBar)
+        
         
         let duration = transitionDuration(using: transitionContext)
         
@@ -113,11 +137,12 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
                 snapContainer.frame = CGRect(x: 0, y: -5, width: finalFrame.width, height: finalFrame.height)
                 snapContainer.layer.cornerRadius = 0
                 clearBG.transform = CGAffineTransform.identity
-                title1.frame = CGRect(x: 15, y: 15, width: ScreenWidth-30, height: title1.bounds.height)
-                title2.frame = CGRect(x: 12, y: title1.frame.maxY + 6, width: ScreenWidth-30, height: title2.bounds.height)
-                closeBtn.frame = CGRect(x:  finalFrame.width-15-25, y:  15, width: 25, height: 25)
+                snapshotTitle1.frame = CGRect(x: 15, y: 15, width: snapshotTitle1.bounds.width, height: snapshotTitle1.bounds.height)
+                snapshotTitle2.frame = CGRect(x: 12, y: snapshotTitle1.frame.maxY + 6, width: snapshotTitle2.bounds.width, height: snapshotTitle2.bounds.height)
+                snapshotClose.frame = CGRect(x:  finalFrame.width-15-25, y:  15, width: 25, height: 25)
                 clearBG.frame = CGRect(x: 0, y: 0, width: finalFrame.width, height: finalFrame.width*1.2)
-                snapshot.frame = finalFrame
+                snapshotToVC.frame = finalFrame
+                snapshotTabBar.frame = CGRect(x: 0, y: containerView.bounds.height, width: snapshotTabBar.bounds.width, height: snapshotTabBar.bounds.height)
             })
             UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.4, animations: {
                 snapContainer.frame = CGRect(x: 0, y: 3, width: finalFrame.width, height: finalFrame.height)
@@ -126,11 +151,11 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
                 snapContainer.frame = finalFrame
             })
         }) { _ in
-//            todayVC.currentTouchCell?.transform = CGAffineTransform.identity
             toVC.view.isHidden = false
             toVC.title1.isHidden = false
             toVC.title2.isHidden = false
             toVC.closeBtn.isHidden = false
+            snapshotTabBar.removeFromSuperview()
             blurView.removeFromSuperview()
             snapContainer.removeFromSuperview()
             let success = !transitionContext.transitionWasCancelled
