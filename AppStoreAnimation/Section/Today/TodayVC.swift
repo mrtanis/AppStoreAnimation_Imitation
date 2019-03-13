@@ -32,43 +32,9 @@ class TodayVC: BaseVC {
         layout.itemSize = CGSize(width: ScreenWidth-40, height: (ScreenWidth-40)*1.2)
         layout.minimumLineSpacing = 30
         layout.minimumInteritemSpacing = 20
-        // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0.5)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        currentTouchCell?.isHidden = false
-        self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .none)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if self.tabBarController?.selectedIndex == 0 {
-            UIView.animate(withDuration: 0, animations: {
-                self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .slide)
-            }) { (finished) in
-                if self.tabBarController?.selectedIndex == 0 {
-//                    self.setTabBarVisible(visible: false, animated: true, timeInterval: 0)
-                }
-            }
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        currentTouchCell?.isHidden = true
-    }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TodayCardDetailSegue" {
             let toVC = segue.destination as! TodayCardDetailVC
@@ -77,20 +43,6 @@ class TodayVC: BaseVC {
             toVC.lastVC = self
         }
     }
-
-    func delayShowTabBar() {
-//        perform(#selector(showTabBar), with: nil, afterDelay: 0.01)
-    }
-    
-    
-    @objc func showTabBar() {
-        UIView.animate(withDuration: 0.5) {
-            self.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
-        }
-//        self.setTabBarVisible(visible: true, animated: true, timeInterval: 0)
-    }
-    
-
 }
 
 extension TodayVC: TodayCardCellDelegate {
@@ -102,8 +54,7 @@ extension TodayVC: TodayCardCellDelegate {
     func updateBeginTouchFrame(cellFrame rect: CGRect, ofCell cell: TodayCardCell) {
         if rect.size.width == ScreenWidth - 40 {
             self.currentTouchCellOriginFrame = (cell.convert(cell.bounds, to: self.view))
-        }
-        
+        } 
     }
 }
 

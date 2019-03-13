@@ -19,7 +19,7 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
     
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1
+        return 0.8
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -34,7 +34,7 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         let todayVC = navVC.viewControllers.first as! TodayVC
         let toVC = tVC as! TodayCardDetailVC
         
-        //取标题和按钮以及tabbar的snapshot
+        //取标题、按钮以及tabbar的snapshot
         guard
             let snapshotTitle1 = toVC.title1.snapshotView(afterScreenUpdates: true),
             let snapshotTitle2 = toVC.title2.snapshotView(afterScreenUpdates: true),
@@ -129,11 +129,14 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         containerView.addSubview(snapshotTabBar)
         
         
-        let duration = transitionDuration(using: transitionContext)
+        //开始动画前隐藏cell
+        todayVC.currentTouchCell?.isHidden = true
         
+        let duration = transitionDuration(using: transitionContext)
+      
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubic, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.35, animations: {
-                blurView.alpha = 1
+                blurView.alpha = 0.5
                 snapContainer.frame = CGRect(x: 0, y: -5, width: finalFrame.width, height: finalFrame.height)
                 snapContainer.layer.cornerRadius = 0
                 clearBG.transform = CGAffineTransform.identity
@@ -151,16 +154,23 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
                 snapContainer.frame = finalFrame
             })
         }) { _ in
-            toVC.view.isHidden = false
-            toVC.title1.isHidden = false
-            toVC.title2.isHidden = false
-            toVC.closeBtn.isHidden = false
+            //移除snapshotTabBar
             snapshotTabBar.removeFromSuperview()
+            //移除blurView
             blurView.removeFromSuperview()
+            //移除snapContainer
             snapContainer.removeFromSuperview()
             let success = !transitionContext.transitionWasCancelled
             if success {
+                //完成后隐藏FromVC的状态栏
+                todayVC.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .none)
                 todayVC.currentTouchCellOriginFrame = nil
+                toVC.view.isHidden = false
+                toVC.title1.isHidden = false
+                toVC.title2.isHidden = false
+                toVC.closeBtn.isHidden = false
+            } else {
+                todayVC.currentTouchCell?.isHidden = false
             }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }

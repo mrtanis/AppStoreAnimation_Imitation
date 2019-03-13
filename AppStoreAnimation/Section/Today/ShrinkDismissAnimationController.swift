@@ -45,11 +45,13 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         
         //将tabBar显示，取snapshot
         tabVC.tabBar.isHidden = false
+        tabVC.tabBar.isTranslucent = false
         guard let snapshotTabBar = tabVC.tabBar.snapshotView(afterScreenUpdates: true) else {
             return
         }
         //取完snapshot再将TabBar隐藏
         tabVC.tabBar.isHidden = true
+        tabVC.tabBar.isTranslucent = true
         
         let containerView = transitionContext.containerView
         
@@ -97,6 +99,15 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         
         //开始做动画
         let duration = transitionDuration(using: transitionContext)
+        
+        if self.fluentAnimation {
+            UIView.animate(withDuration: 0.5) {
+                todayVC.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
+                
+                snapshotTabBar.frame = CGRect(x: 0, y: containerView.bounds.height - snapshotTabBar.bounds.height, width: snapshotTabBar.bounds.width, height: snapshotTabBar.bounds.height)
+            }
+        }
+
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubic, animations: {
             if (self.fluentAnimation) {
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
@@ -109,9 +120,9 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
                     snapshotTitle2.frame = CGRect(x:   12, y:  snapshotTitle1.frame.maxY+6, width: snapshotTitle2.bounds.width, height: snapshotTitle2.bounds.height)
                     snapshotImage.frame = CGRect(x: -20, y: -20*1.2, width: ScreenWidth, height: ScreenWidth*1.2)
                     snapshotImage.layer.cornerRadius = 15
-                    snapshotTabBar.frame = CGRect(x: 0, y: containerView.bounds.height - snapshotTabBar.bounds.height, width: snapshotTabBar.bounds.width, height: snapshotTabBar.bounds.height)
+                    
                 })
-                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.3, animations: {
                     snapshotFromVC.frame = self.finalFrame
                     snapContainer.center = CGPoint(x: self.finalFrame.midX, y: self.finalFrame.midY)
                     snapContainer.bounds = CGRect(x: 0, y: 0, width: self.finalFrame.width, height: self.finalFrame.height)
@@ -149,7 +160,7 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
             }
             
         }) { (finished) in
-            tabVC.tabBar.isHidden = false
+            //移除snapshotTabBar
             snapshotTabBar.removeFromSuperview()
             //移除模糊视图
             blurView.removeFromSuperview()
@@ -158,16 +169,17 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
             let success = !transitionContext.transitionWasCancelled
             if !success {
                 toVC.view.removeFromSuperview()
+                fromVC.view.removeFromSuperview()
+                todayVC.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .none)
             } else {
+                tabVC.tabBar.isHidden = false
+                todayVC.currentTouchCell?.isHidden = false
                 todayVC.currentTouchCell?.transform = CGAffineTransform.identity
                 todayVC.currentTouchCell?.nowTouchState = .none
                 todayVC.currentTouchCell?.nowState = .normal
             }
             transitionContext.completeTransition(success)
         }
-        
-        
-        
     }
     
 

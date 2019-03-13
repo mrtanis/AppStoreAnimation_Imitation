@@ -99,18 +99,11 @@ class TodayCardDetailVC: BaseVC {
         self.transitioningDelegate = self
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-            self.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .none)
-    }
     
 //    点击关闭按钮
     @objc func clickClose() {
         fluentAnimaition = true
         self.dismiss(animated: true, completion: nil)
-        if let vc = lastVC {
-            vc.delayShowTabBar()
-        }
     }
 
 }
@@ -164,6 +157,8 @@ extension TodayCardDetailVC: SwipeInteractionDelegate {
         guard let vc = lastVC else {
             return
         }
-        vc.showTabBar()
+        UIView.animate(withDuration: 0.5, animations: {
+            vc.setStatusBar(forHidden: false, forStyle: .default, forAnimation: .slide)
+        })
     }
 }
