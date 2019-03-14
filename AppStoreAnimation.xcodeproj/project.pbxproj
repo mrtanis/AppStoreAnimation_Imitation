@@ -23,13 +23,12 @@
 		265D8208215B709600A792F2 /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8207215B709600A792F2 /* UpdateVC.swift */; };
 		265D820A215B70A900A792F2 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8209215B70A900A792F2 /* SearchVC.swift */; };
 		265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8213215B91B400A792F2 /* TodayCardCell.swift */; };
-		265D821A215DD8E300A792F2 /* TodayCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D8219215DD8E300A792F2 /* TodayCardHeaderView.swift */; };
-		265D821C215DD90800A792F2 /* TodayCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D821B215DD90800A792F2 /* TodayCardFooterView.swift */; };
-		265D821E215E0EC800A792F2 /* TodayCardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265D821D215E0EC800A792F2 /* TodayCardHeaderView.xib */; };
-		26615A302161169100E837F3 /* TodayCardDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26615A2F2161169100E837F3 /* TodayCardDetailCell.swift */; };
 		26B52EC7215F5676009B18E1 /* TodayCardDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B52EC6215F5676009B18E1 /* TodayCardDetailVC.swift */; };
 		26B52EC9215F56B6009B18E1 /* ExtendPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B52EC8215F56B6009B18E1 /* ExtendPresentAnimationController.swift */; };
 		26B52ECC21606ECF009B18E1 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B52ECB21606ECF009B18E1 /* BaseVC.swift */; };
+		26E4C44A2239ED69006E87D9 /* TodayDetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4C4492239ED69006E87D9 /* TodayDetailScrollView.swift */; };
+		26E4C44C223A58AF006E87D9 /* TodayCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4C44B223A58AF006E87D9 /* TodayCardHeaderView.swift */; };
+		26E4C44F223A5EAB006E87D9 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4C44E223A5EAB006E87D9 /* DateHelper.swift */; };
 		26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0EBED215BC473000CACB8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,13 +50,12 @@
 		265D8207215B709600A792F2 /* UpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVC.swift; sourceTree = "<group>"; };
 		265D8209215B70A900A792F2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		265D8213215B91B400A792F2 /* TodayCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardCell.swift; sourceTree = "<group>"; };
-		265D8219215DD8E300A792F2 /* TodayCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardHeaderView.swift; sourceTree = "<group>"; };
-		265D821B215DD90800A792F2 /* TodayCardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardFooterView.swift; sourceTree = "<group>"; };
-		265D821D215E0EC800A792F2 /* TodayCardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCardHeaderView.xib; sourceTree = "<group>"; };
-		26615A2F2161169100E837F3 /* TodayCardDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardDetailCell.swift; sourceTree = "<group>"; };
 		26B52EC6215F5676009B18E1 /* TodayCardDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardDetailVC.swift; sourceTree = "<group>"; };
 		26B52EC8215F56B6009B18E1 /* ExtendPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendPresentAnimationController.swift; sourceTree = "<group>"; };
 		26B52ECB21606ECF009B18E1 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		26E4C4492239ED69006E87D9 /* TodayDetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailScrollView.swift; sourceTree = "<group>"; };
+		26E4C44B223A58AF006E87D9 /* TodayCardHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCardHeaderView.swift; sourceTree = "<group>"; };
+		26E4C44E223A5EAB006E87D9 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		26F0EBED215BC473000CACB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3ED693BA294757E92103D7E1 /* Pods_AppStoreAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B9F164042ED551AD85862AB /* Pods-AppStoreAnimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreAnimation.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreAnimation/Pods-AppStoreAnimation.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +95,7 @@
 		265D81E2215B642E00A792F2 /* AppStoreAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				26E4C44D223A5E63006E87D9 /* helper */,
 				265D81E3215B642E00A792F2 /* AppDelegate.swift */,
 				26F0EBED215BC473000CACB8 /* Extensions.swift */,
 				26B52ECA21606E6B009B18E1 /* Base */,
@@ -171,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				265D820E215B8A6F00A792F2 /* Cell */,
+				26E4C4492239ED69006E87D9 /* TodayDetailScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,21 +178,10 @@
 		265D820E215B8A6F00A792F2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				26615A2E2161160900E837F3 /* DetailCell */,
+				26E4C44B223A58AF006E87D9 /* TodayCardHeaderView.swift */,
 				265D8213215B91B400A792F2 /* TodayCardCell.swift */,
-				265D8219215DD8E300A792F2 /* TodayCardHeaderView.swift */,
-				265D821D215E0EC800A792F2 /* TodayCardHeaderView.xib */,
-				265D821B215DD90800A792F2 /* TodayCardFooterView.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		26615A2E2161160900E837F3 /* DetailCell */ = {
-			isa = PBXGroup;
-			children = (
-				26615A2F2161169100E837F3 /* TodayCardDetailCell.swift */,
-			);
-			path = DetailCell;
 			sourceTree = "<group>";
 		};
 		26B52ECA21606E6B009B18E1 /* Base */ = {
@@ -203,6 +192,14 @@
 				26B52ECB21606ECF009B18E1 /* BaseVC.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		26E4C44D223A5E63006E87D9 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				26E4C44E223A5EAB006E87D9 /* DateHelper.swift */,
+			);
+			path = helper;
 			sourceTree = "<group>";
 		};
 		3376E248CD25FB8D675B2BF7 /* Frameworks */ = {
@@ -284,7 +281,6 @@
 			files = (
 				265D81EE215B643000A792F2 /* LaunchScreen.storyboard in Resources */,
 				265D81EB215B643000A792F2 /* Assets.xcassets in Resources */,
-				265D821E215E0EC800A792F2 /* TodayCardHeaderView.xib in Resources */,
 				26187FEC2177262B008F9C35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,18 +344,18 @@
 				265D8208215B709600A792F2 /* UpdateVC.swift in Sources */,
 				2653116B218203F100ECB940 /* TodayVCCollectionView.swift in Sources */,
 				265D8200215B6CDD00A792F2 /* NavVC.swift in Sources */,
+				26E4C44C223A58AF006E87D9 /* TodayCardHeaderView.swift in Sources */,
 				265D81FC215B6B6500A792F2 /* TabVC.swift in Sources */,
 				26B52ECC21606ECF009B18E1 /* BaseVC.swift in Sources */,
 				265D8202215B705E00A792F2 /* TodayVC.swift in Sources */,
-				265D821C215DD90800A792F2 /* TodayCardFooterView.swift in Sources */,
+				26E4C44F223A5EAB006E87D9 /* DateHelper.swift in Sources */,
 				265D8204215B706F00A792F2 /* GameVC.swift in Sources */,
 				265D8206215B707E00A792F2 /* AppVC.swift in Sources */,
 				265D81E4215B642E00A792F2 /* AppDelegate.swift in Sources */,
+				26E4C44A2239ED69006E87D9 /* TodayDetailScrollView.swift in Sources */,
 				26B52EC7215F5676009B18E1 /* TodayCardDetailVC.swift in Sources */,
 				26B52EC9215F56B6009B18E1 /* ExtendPresentAnimationController.swift in Sources */,
-				26615A302161169100E837F3 /* TodayCardDetailCell.swift in Sources */,
 				26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */,
-				265D821A215DD8E300A792F2 /* TodayCardHeaderView.swift in Sources */,
 				265D8214215B91B400A792F2 /* TodayCardCell.swift in Sources */,
 				2658225F2177627C004A7B44 /* ShrinkDismissAnimationController.swift in Sources */,
 			);

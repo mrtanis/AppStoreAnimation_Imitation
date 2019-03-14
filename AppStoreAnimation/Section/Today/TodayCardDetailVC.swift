@@ -10,10 +10,12 @@ import UIKit
 
 class TodayCardDetailVC: BaseVC {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    var isDraging = false
+    @IBOutlet weak var scrollView: TodayDetailScrollView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var headerImageTop: NSLayoutConstraint!
+    @IBOutlet weak var contentLabelTop: NSLayoutConstraint!
     
     var swipeInteractionController: SwipeInteractionController?
     var dismissToRect: CGRect?
@@ -110,14 +112,21 @@ class TodayCardDetailVC: BaseVC {
 
 extension TodayCardDetailVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         let offsetY = scrollView.contentOffset.y
-        if offsetY < 0 {
+        
+        if offsetY <= 0 {
             headerImageTop.constant = offsetY
             title1.snp.updateConstraints { (make) in
                 make.top.equalTo(15+offsetY)
             }
             title2.snp.updateConstraints { (make) in
                 make.top.equalTo(39+offsetY)
+            }
+            
+            if isDraging {
+                contentLabelTop.constant = 27 + offsetY
+                scrollView.showsVerticalScrollIndicator = false
             }
         } else {
             headerImageTop.constant = 0
@@ -127,7 +136,24 @@ extension TodayCardDetailVC: UIScrollViewDelegate {
             title2.snp.updateConstraints { (make) in
                 make.top.equalTo(39)
             }
+            contentLabelTop.constant = 27
+            scrollView.showsVerticalScrollIndicator = true
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isDraging = true
+        
+//        let offsetY = scrollView.contentOffset.y
+//
+//        if offsetY < 0 {
+//            scrollView.isScrollEnabled = false
+//        }
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        isDraging = false
+//        scrollView.isScrollEnabled = true
     }
 }
 
@@ -162,3 +188,4 @@ extension TodayCardDetailVC: SwipeInteractionDelegate {
         })
     }
 }
+

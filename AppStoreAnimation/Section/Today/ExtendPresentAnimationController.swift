@@ -26,6 +26,7 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let tVC = transitionContext.viewController(forKey: .to)
             else {
+                transitionContext.completeTransition(false)
                 return
         }
         
@@ -41,6 +42,7 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
             let snapshotClose = toVC.closeBtn.snapshotView(afterScreenUpdates: true),
         let snapshotTabBar = tabVC.tabBar.snapshotView(afterScreenUpdates: false)
         else {
+            transitionContext.completeTransition(false)
                 return
         }
         
@@ -53,6 +55,7 @@ class ExtendPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
         toVC.closeBtn.isHidden = true
         
         guard let snapshotToVC = tVC.view.snapshotView(afterScreenUpdates: true) else {
+            transitionContext.completeTransition(false)
                 return
         }
         

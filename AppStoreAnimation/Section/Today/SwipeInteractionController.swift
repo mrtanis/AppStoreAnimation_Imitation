@@ -18,6 +18,8 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
     //代理
     weak var delegate: SwipeInteractionDelegate?
     
+    var beginPoint = CGPoint.zero
+    var beginTransition = CGPoint.zero
     var delegateCalled = false
     
     var interactionInProgress = false
@@ -37,9 +39,12 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
         view.addGestureRecognizer(sideSwipe)
         
         //下滑返回
-//        let downSwipe = UIPanGestureRecognizer(target: self, action: #selector(handleDownSwipeGesture(_:)))
-//        downSwipe.require(toFail: sideSwipe)
-//        view.addGestureRecognizer(downSwipe)
+        let downSwipe = UIPanGestureRecognizer(target: self, action: #selector(handleDownSwipeGesture(_:)))
+        if #available(iOS 11.0, *) {
+            downSwipe.name = "down"
+        }
+        downSwipe.require(toFail: sideSwipe)
+        view.addGestureRecognizer(downSwipe)
     }
     
     @objc func handleSideSwipeGesture(_ gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
@@ -64,6 +69,7 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
                     delegeteOK.SwipeInteractionAskToShowTabBar()
                 }
                 finish()
+                print(">>>Side<<<Dissmiss Transition Finished!")
             } else {
                 update(progress)
             }
@@ -73,14 +79,17 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
         case .cancelled:
             interactionInProgress = false
             cancel()
+            print(">>>Side<<<Dissmiss Transition Cancelled!")
             
         // 5
         case .ended:
             interactionInProgress = false
             if shouldCompleteTransition {
                 finish()
+                print(">>>Side<<<Dissmiss Transition Finished!")
             } else {
                 cancel()
+                print(">>>Side<<<Dissmiss Transition Cancelled!")
             }
         default:
             break
@@ -89,24 +98,37 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
     
     @objc func handleDownSwipeGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
         
-        if viewController.scrollView.contentOffset.y > 0 {
-            return
-        }
+        
+        
+        let currentPoint = gestureRecognizer.location(in: gestureRecognizer.view!.superview!)
         
         // 1
         let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview!)
-        var progress = (translation.y / 200)
+        var progress = ((translation.y - beginTransition.y) / 300)
         progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
-        
+        print("DownProgress:\(progress)")
         switch gestureRecognizer.state {
             
         // 2
         case .began:
-            interactionInProgress = true
-            viewController.dismiss(animated: true, completion: nil)
-            
+            beginPoint = currentPoint
+
         // 3
         case .changed:
+            if !interactionInProgress {
+                beginTransition = translation
+            }
+            
+            if currentPoint.y <= beginPoint.y || viewController.scrollView.contentOffset.y > 0{
+                return
+            }
+
+            if !interactionInProgress {
+                interactionInProgress = true
+                viewController.dismiss(animated: true, completion: nil)
+            }
+            
+            
             shouldCompleteTransition = progress > 0.41
             if shouldCompleteTransition {
                 if delegateCalled == false, let delegeteOK = delegate, delegeteOK.responds(to: #selector(SwipeInteractionDelegate.SwipeInteractionAskToShowTabBar)) {
@@ -114,6 +136,7 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
                     delegeteOK.SwipeInteractionAskToShowTabBar()
                 }
                 finish()
+                print(">>>Down<<<Dissmiss Transition Finished!")
             } else {
                 update(progress)
             }
@@ -121,17 +144,22 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
             
         // 4
         case .cancelled:
-            interactionInProgress = false
+            
             cancel()
+           interactionInProgress = false
+            print(">>>Down<<<Dissmiss Transition Cancelled!")
             
         // 5
         case .ended:
-            interactionInProgress = false
+            
             if shouldCompleteTransition {
                 finish()
+                print(">>>Down<<<Dissmiss Transition Finished!")
             } else {
                 cancel()
+                print(">>>Down<<<Dissmiss Transition Cancelled!")
             }
+            interactionInProgress = false
         default:
             break
         }

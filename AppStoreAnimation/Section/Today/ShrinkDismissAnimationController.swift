@@ -31,11 +31,12 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from) as? TodayCardDetailVC,
             let toVC = transitionContext.viewController(forKey: .to),
-            let snapshotFromVC = fromVC.view.snapshotView(afterScreenUpdates: false),
+            let snapshotToVC = toVC.view.snapshotView(afterScreenUpdates: true),
         let snapshotImage = fromVC.headerImage.snapshotView(afterScreenUpdates: false),
         let snapshotTitle1 = fromVC.title1.snapshotView(afterScreenUpdates: false),
         let snapshotTitle2 = fromVC.title2.snapshotView(afterScreenUpdates: false)
             else {
+                transitionContext.completeTransition(false)
                 return
         }
         
@@ -43,10 +44,14 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         let navVC = tabVC.selectedViewController as! NavVC
         let todayVC = navVC.viewControllers.first as! TodayVC
         
+        //将滚动条隐藏，取FromVC的snapshot
         //将tabBar显示，取snapshot
+        fromVC.scrollView.showsVerticalScrollIndicator = false
         tabVC.tabBar.isHidden = false
         tabVC.tabBar.isTranslucent = false
-        guard let snapshotTabBar = tabVC.tabBar.snapshotView(afterScreenUpdates: true) else {
+        guard let snapshotTabBar = tabVC.tabBar.snapshotView(afterScreenUpdates: true),
+        let snapshotFromVC = fromVC.view.snapshotView(afterScreenUpdates: true)
+            else {
             return
         }
         //取完snapshot再将TabBar隐藏
@@ -55,8 +60,8 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         
         let containerView = transitionContext.containerView
         
-        //添加将要呈现的VC视图
-        containerView.addSubview(toVC.view)
+        //添加ToVC的snapshot
+        containerView.addSubview(snapshotToVC)
         
         //添加模糊视图
         let effect = UIBlurEffect.init(style: .light)
@@ -96,6 +101,9 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         
         containerView.addSubview(snapshotTabBar)
         snapshotTabBar.frame = CGRect(x: 0, y: containerView.bounds.height, width: snapshotTabBar.bounds.width, height: snapshotTabBar.bounds.height)
+        
+        //禁用滚动
+        fromVC.scrollView.isScrollEnabled = false
         
         //开始做动画
         let duration = transitionDuration(using: transitionContext)
@@ -160,16 +168,21 @@ class ShrinkDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
             }
             
         }) { (finished) in
+            //启用滚动
+            fromVC.scrollView.isScrollEnabled = true
             //移除snapshotTabBar
             snapshotTabBar.removeFromSuperview()
+            //移除snapshotFromVC
+            snapshotFromVC.removeFromSuperview()
             //移除模糊视图
             blurView.removeFromSuperview()
+            //移除snapshotToVC
+            snapshotToVC.removeFromSuperview()
             //移除snapContainer
             snapContainer.removeFromSuperview()
             let success = !transitionContext.transitionWasCancelled
             if !success {
-                toVC.view.removeFromSuperview()
-                fromVC.view.removeFromSuperview()
+//                toVC.view.removeFromSuperview()
                 todayVC.setStatusBar(forHidden: true, forStyle: .default, forAnimation: .none)
             } else {
                 tabVC.tabBar.isHidden = false

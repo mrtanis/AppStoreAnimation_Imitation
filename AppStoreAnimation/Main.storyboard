@@ -163,6 +163,9 @@
                                         <constraint firstItem="BkB-kx-Wrl" firstAttribute="bottom" secondItem="Ifs-Ay-ce9" secondAttribute="bottom" constant="-15" id="lde-py-vrI"/>
                                         <constraint firstItem="cjM-T7-Ob6" firstAttribute="top" secondItem="1We-iw-vL6" secondAttribute="topMargin" constant="20" id="yMK-2I-ixl"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="dateLabel" destination="cjM-T7-Ob6" id="7U7-nY-06B"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -196,7 +199,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Sf-yUV">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Sf-yUV" customClass="TodayDetailScrollView" customModule="AppStoreAnimation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtM-aj-rcl">
@@ -267,6 +270,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="contentLabelTop" destination="nuO-Zy-KM3" id="Zex-xv-a4v"/>
                         <outlet property="headerImage" destination="vn3-oP-o9T" id="lYn-mQ-4kt"/>
                         <outlet property="headerImageTop" destination="Hpq-xD-h4R" id="Bgj-Yk-BFX"/>
                         <outlet property="headerView" destination="XtM-aj-rcl" id="C0R-Lt-G0B"/>
