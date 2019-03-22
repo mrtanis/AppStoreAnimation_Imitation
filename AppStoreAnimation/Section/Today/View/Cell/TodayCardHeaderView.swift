@@ -13,10 +13,9 @@ class TodayCardHeaderView: UICollectionReusableView, Reusable {
     
     override func awakeFromNib() {
         let date = Date()
-        let formatter = DateFormatter.init()
-        formatter.dateFormat = "M月d日 星期五"
-        let dateStr = formatter.string(from: date)
-        dateLabel.text = dateStr
+        let dateStr = date.dateString(.md(.half(.zh)))
+        let weekdayStr = date.weekdayString(.full(.zh))
+        dateLabel.text = dateStr + " " + weekdayStr
     }
     
 }

@@ -10,21 +10,20 @@ import UIKit
 
 //代理
 @objc protocol SwipeInteractionDelegate: NSObjectProtocol {
-    @objc func SwipeInteractionAskToShowTabBar()
+    @objc func SwipeInteractionAskToShowStatusBar()
 }
 
 class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
 
     //代理
     weak var delegate: SwipeInteractionDelegate?
-    
     var beginPoint = CGPoint.zero
     var beginTransition = CGPoint.zero
     var delegateCalled = false
-    
     var interactionInProgress = false
     private var shouldCompleteTransition = false
     private weak var viewController: TodayCardDetailVC!
+    
     init(viewController: TodayCardDetailVC) {
         super.init()
         self.viewController = viewController
@@ -40,9 +39,7 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
         
         //下滑返回
         let downSwipe = UIPanGestureRecognizer(target: self, action: #selector(handleDownSwipeGesture(_:)))
-        if #available(iOS 11.0, *) {
-            downSwipe.name = "down"
-        }
+
         downSwipe.require(toFail: sideSwipe)
         view.addGestureRecognizer(downSwipe)
     }
@@ -64,9 +61,9 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
         case .changed:
             shouldCompleteTransition = progress > 0.41
             if shouldCompleteTransition {
-                if delegateCalled == false, let delegeteOK = delegate, delegeteOK.responds(to: #selector(SwipeInteractionDelegate.SwipeInteractionAskToShowTabBar)) {
+                if delegateCalled == false, let delegeteOK = delegate, delegeteOK.responds(to: #selector(SwipeInteractionDelegate.SwipeInteractionAskToShowStatusBar)) {
                     delegateCalled = true
-                    delegeteOK.SwipeInteractionAskToShowTabBar()
+                    delegeteOK.SwipeInteractionAskToShowStatusBar()
                 }
                 finish()
                 print(">>>Side<<<Dissmiss Transition Finished!")
@@ -106,7 +103,7 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
         let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview!)
         var progress = ((translation.y - beginTransition.y) / 300)
         progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
-        print("DownProgress:\(progress)")
+
         switch gestureRecognizer.state {
             
         // 2
@@ -131,9 +128,9 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
             
             shouldCompleteTransition = progress > 0.41
             if shouldCompleteTransition {
-                if delegateCalled == false, let delegeteOK = delegate, delegeteOK.responds(to: #selector(SwipeInteractionDelegate.SwipeInteractionAskToShowTabBar)) {
+                if delegateCalled == false, let delegeteOK = delegate, delegeteOK.responds(to: #selector(SwipeInteractionDelegate.SwipeInteractionAskToShowStatusBar)) {
                     delegateCalled = true
-                    delegeteOK.SwipeInteractionAskToShowTabBar()
+                    delegeteOK.SwipeInteractionAskToShowStatusBar()
                 }
                 finish()
                 print(">>>Down<<<Dissmiss Transition Finished!")

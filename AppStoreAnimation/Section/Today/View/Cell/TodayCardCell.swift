@@ -91,16 +91,6 @@ class TodayCardCell: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate
 
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if (gestureRecognizer.view!.isKind(of: UIScrollView.self)) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-    
-    
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let isInside = super.point(inside: point, with: event)
         if isInside {

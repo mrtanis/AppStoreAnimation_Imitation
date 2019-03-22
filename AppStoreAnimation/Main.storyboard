@@ -195,7 +195,7 @@
         <scene sceneID="6kF-LQ-CIS">
             <objects>
                 <viewController id="SLt-S1-sm1" customClass="TodayCardDetailVC" customModule="AppStoreAnimation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vgv-Pr-Ws6">
+                    <view key="view" contentMode="scaleToFill" id="vgv-Pr-Ws6" customClass="TodayDetailView" customModule="AppStoreAnimation" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

@@ -179,7 +179,7 @@ extension TodayCardDetailVC: UIViewControllerTransitioningDelegate {
 }
 
 extension TodayCardDetailVC: SwipeInteractionDelegate {
-    func SwipeInteractionAskToShowTabBar() {
+    func SwipeInteractionAskToShowStatusBar() {
         guard let vc = lastVC else {
             return
         }

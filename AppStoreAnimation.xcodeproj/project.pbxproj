@@ -29,6 +29,7 @@
 		26E4C44A2239ED69006E87D9 /* TodayDetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4C4492239ED69006E87D9 /* TodayDetailScrollView.swift */; };
 		26E4C44C223A58AF006E87D9 /* TodayCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4C44B223A58AF006E87D9 /* TodayCardHeaderView.swift */; };
 		26E4C44F223A5EAB006E87D9 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4C44E223A5EAB006E87D9 /* DateHelper.swift */; };
+		26E4C451223B8704006E87D9 /* TodayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4C450223B8704006E87D9 /* TodayDetailView.swift */; };
 		26F0EBEE215BC473000CACB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0EBED215BC473000CACB8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		26E4C4492239ED69006E87D9 /* TodayDetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailScrollView.swift; sourceTree = "<group>"; };
 		26E4C44B223A58AF006E87D9 /* TodayCardHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCardHeaderView.swift; sourceTree = "<group>"; };
 		26E4C44E223A5EAB006E87D9 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		26E4C450223B8704006E87D9 /* TodayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailView.swift; sourceTree = "<group>"; };
 		26F0EBED215BC473000CACB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3ED693BA294757E92103D7E1 /* Pods_AppStoreAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B9F164042ED551AD85862AB /* Pods-AppStoreAnimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreAnimation.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreAnimation/Pods-AppStoreAnimation.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				265D820E215B8A6F00A792F2 /* Cell */,
 				26E4C4492239ED69006E87D9 /* TodayDetailScrollView.swift */,
+				26E4C450223B8704006E87D9 /* TodayDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				265D8200215B6CDD00A792F2 /* NavVC.swift in Sources */,
 				26E4C44C223A58AF006E87D9 /* TodayCardHeaderView.swift in Sources */,
 				265D81FC215B6B6500A792F2 /* TabVC.swift in Sources */,
+				26E4C451223B8704006E87D9 /* TodayDetailView.swift in Sources */,
 				26B52ECC21606ECF009B18E1 /* BaseVC.swift in Sources */,
 				265D8202215B705E00A792F2 /* TodayVC.swift in Sources */,
 				26E4C44F223A5EAB006E87D9 /* DateHelper.swift in Sources */,
